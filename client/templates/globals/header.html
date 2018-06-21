@@ -1,17 +1,16 @@
 <template name="header">
 	<nav class="navbar navbar-default" role="navigation">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/messages/general">
-          How I Roll
-          <span>{{reminder}}</span>
-        </a>
-	    </div>
-      {{#if currentUser}}
-        {{> authenticatedNavigation}}
-      {{else}}
-        {{> publicNavigation}}
-      {{/if}}
-	  </div>
-	</nav>
+   <div class="container">
+     <div class="navbar-header">
+       <a class="navbar-brand" href="/messages/general">
+        <span>{{reminder}}</span>
+      </a>
+    </div>
+    {{#if currentUser}}
+    {{> authenticatedNavigation}}
+    {{else}}
+    {{> publicNavigation}}
+    {{/if}}
+  </div>
+</nav>
 </template>

@@ -2,13 +2,14 @@ let template;
 
 let _handleLogin = () => {
   let email    = template.find( '[name="emailAddress"]' ).value,
-      password = template.find( '[name="password"]' ).value;
+  password = template.find( '[name="password"]' ).value;
 
   Meteor.loginWithPassword( email, password, ( error ) => {
     if ( error ) {
       Bert.alert( error.reason, 'warning' );
     } else {
       Bert.alert( 'Logged in!', 'success' );
+      FlowRouter.go('/dashboard');
     }
   });
 };
