@@ -1,0 +1,57 @@
+h1 {
+	font-size:45px;
+	font-weight: bold;
+	font-family:"Times New Roman";
+}
+
+.joinedGames {
+	background-color: none;
+	position:absolute; 
+	top: 175px;
+	bottom:10px;
+	left: 50px;
+	right: 50px;
+	border: none;
+	padding: 25px;
+	margin: 25px;
+}
+
+.button{
+	display: inline-block;
+	border-radius: 8px;
+	background-color: #0033ff;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 10px;
+	width: 250px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 10px;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '»';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.button:hover span {
+	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+} 
