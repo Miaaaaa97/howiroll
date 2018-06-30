@@ -1,0 +1,1 @@
+CharacterCards = new Mongo.Collection('characterCards');

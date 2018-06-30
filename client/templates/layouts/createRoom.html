@@ -1,46 +1,44 @@
 <template name="createRoom">
 	<div>
-		<form>
-			<label>
-				Room name: 
-			</label>
-			<input type="text" name="password">
-		</form>
+		<label>
+			Room name: 
+		</label>
+		<input type="text" name="password">
+
 	</div>
 	<div>
-		<form>
-			<label>
-				Password: 
-			</label>
-			<input type="text" name="password">
-		</form>
+
+		<label>
+			Password: 
+		</label>
+		<input type="text" name="password">
+
 	</div>
 	<div>	
-		<form action=" ">
-			<label> Player number: </label>
-			<input list="playerNumber">
-			<datalist id="playerNumber">
-				<option value="3"></option>
-				<option value="4"></option>
-				<option value="5"></option>
-				<option value="6"></option>
-				<option value="7"></option>
-				<option value="8"></option>
-				<option value="9"></option>
-				<option value="10"></option>
-			</datalist>
-			<input type="submit">
-		</form>
+
+		<label> Player number: </label>
+		<input list="playerNumber">
+		<datalist id="playerNumber">
+			<option value="3"></option>
+			<option value="4"></option>
+			<option value="5"></option>
+			<option value="6"></option>
+			<option value="7"></option>
+			<option value="8"></option>
+			<option value="9"></option>
+			<option value="10"></option>
+		</datalist>
+		<input type="submit">
+
 	</div>
-	
+
 	<div>
-		<form action="">
-			<label>
-				Allow public to view
-			</label>
-			<input type="radio" name="choice" value="yes">Yes
-			<input type="radio" name="choice" value="no">No
-		</form>
+
+		<label>
+			Allow public to view
+		</label>
+		<input type="radio" name="choice" value="yes">Yes
+		<input type="radio" name="choice" value="no">No
 	</div>
 	<div>
 		<a href = '/messages/:channel'>
