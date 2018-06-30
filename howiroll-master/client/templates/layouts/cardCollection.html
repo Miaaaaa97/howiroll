@@ -1,0 +1,15 @@
+<template name="cardCollection">
+	<div class="cardCollection">
+		<h2> cardCollection </h2>
+		<ul>
+			{{#each cards}}		
+			<a id = "view" target="_blank" href = {{findId _id}}>
+				<li class="cardName">
+					{{getName card}}		
+				</li>
+			</a>
+			
+			{{/each}}
+		</ul>	
+	</div>
+</template>
