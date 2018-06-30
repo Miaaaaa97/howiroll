@@ -1,0 +1,343 @@
+<template name="view">
+	<form id = "characterCardV">	
+		<div>
+			<table class = "table">
+				<tr>
+					<td rowspan="2" width = "300px">
+						<label for = "character name">character name: </label>
+						<input class="card" type = "text" name="classLevel" id="class" value = {{getName}}>	
+						
+					</td>
+					<td>
+						<label for = "class">class & level: </label>
+						<input class="card" type = "text" name="classLevel" id="class" value = {{getClass}}>	
+					</td>
+					<td>
+						<label for = "background">background: </label>
+						<input class="card" type = "text" name = "background" id = "background" value = {{getBG}}>
+					</td>
+					<td>
+						<label for = "eventName">event name: </label>
+						<input class="card" type = "text" name = "eventName" id = "eventName" value = {{getEN}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "race">race: </label>
+						<input class="card" type = "text" name = "race" id = "race" value = {{getrace}}>
+					</td>
+					<td><label for = "alighment">alighment: </label>
+						<input class="card" type = "text" name = "alighment" id = "alighment" value = {{getAlighment}}>
+					</td>
+					<td><label for = "experience points">experience points: </label>
+						<input class="card" type = "text" name = "experiencePoints" id = "experience points" value = {{getEP}}>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table class = "child-1">		
+				<tr>
+					<td><label for = "strength">strength</label><br/>
+						<input class="card" type = "text" name = "strength" id = "strength" value = {{getstr}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "dexterity">dexterity</label><br/>
+						<input class="card" type = "text" name="dexterity" id="dexterity" value = {{getdex}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "constitution">constitution</label><br/>
+						<input class="card" type = "text" name="constitution" id="constitution" value = {{getcon}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "intelligence">intelligence</label><br/>
+						<input class="card" type = "text" name="intelligence" id="intelligence" value = {{getint}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "wisdom">wisdom</label><br/>
+						<input class="card" type = "text" name="wisdom" id="wisdom" value = {{getwis}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "charisma">charisma</label><br/>
+						<input class="card" type = "text" name="charisma" id="charisma" value = {{getcha}}>
+					</td>
+				</tr>			
+			</table>
+			<table class = "child-2">		
+				<tr>
+					<td><label for = "inspiration">inspiration: </label>
+						<input class="card" type = "text" name="inspiration" id="inspiration" value = {{getEP}}>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "proficiency bonus">proficiency bonus: </label>
+						<input class="card" type = "text" name="proficiency bonus" id="proficiency bonus" value = {{getEP}}>
+					</td>
+				</tr>
+				<tr style = "height: 30%">
+					<table class = "child-2-1">
+						<th>saving throws</th>
+						<tr>
+							<td><label for = "ststrength">strength: </label>
+								<input class="card" type = "text" name="ststrength" id="ststrength" value = {{getststr}}>
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "stdexterity">dexterity: </label>
+								<input class="card" type = "text" name="stdexterity" id="stdexterity" value = {{getstdex}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "stconstitution">constitution: </label>
+								<input class="card" type = "text" name="stconstitution" id="stconstitution" value = {{getstcon}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "stintelligence">intelligence: </label>
+								<input class="card" type = "text" name="stintelligence" id="stintelligence" value = {{getstint}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "stwisdom">wisdom: </label>
+								<input class="card" type = "text" name="stwisdom" id="stwisdom" value = {{getstwis}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "stcharisma">charisma: </label>
+								<input class="card" type = "text" name="stcharisma" id="stcharisma" value = {{getstcha}}>
+							</td>
+						</tr>			
+					</table>
+				</tr>
+				<tr style = "height: 60%">
+					<table class = "child-2-2">
+						<th>skills</th>
+						<tr>
+							<td><label for = "acrobatics">acrobatics(Dex): </label>
+								<input class="card" type = "text" name="acrobatics" id="acrobatics" value = {{acro}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "animalHandling">animal handling(Wis): </label>
+								<input class="card" type = "text" name="animalHandling" id="animalHandling" value = {{getanim}}>
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "arcana">arcana(Int): </label>
+								<input class="card" type = "text" name="arcana" id="arcana" value = {{getarca}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "athletics">athletics(Str): </label>
+								<input class="card" type = "text" name="athletics" id="athletics" value = {{getathl}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "deception">deception(Cha): </label>
+								<input class="card" type = "text" name="deception" id="deception" value = {{getdece}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "history">history(Int): </label>
+								<input class="card" type = "text" name="history" id="history" value = {{gethist}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "insight">insight(Wis): </label>
+								<input class="card" type = "text" name="insight" id="insight" value = {{getinsi}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "intimidation">intimidation(Cha): </label>
+								<input class="card" type = "text" name="intimidation" id="intimidation" value = {{getinti}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "investigation">investigation(Int): </label>
+								<input class="card" type = "text" name="investigation" id="investigation" value = {{getininve}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "medicine">medicine(Wis): </label>
+								<input class="card" type = "text" name="medicine" id="medicine" value = {{getmedi}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "nature">nature(Int): </label>
+								<input class="card" type = "text" name="nature" id="nature" value = {{getnatu}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "perception">perception(Wis): </label>
+								<input class="card" type = "text" name="perception" id="perception" value = {{getperc}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "performance">performance(Cha): </label>
+								<input class="card" type = "text" name="performance" id="performance" value = {{getperf}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "persuasion">persuasion(Cha): </label>
+								<input class="card" type = "text" name="persuasion" id="persuasion" value = {{getpers}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "religion">religion(Int): </label>
+								<input class="card" type = "text" name="religion" id="religion" value = {{getreli}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "sleight">sleight of hand(Dex): </label>
+								<input class="card" type = "text" name="sleight" id="sleight" value = {{getslei}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "stealth">stealth(Dex): </label>
+								<input class="card" type = "text" name="stealth" id="stealth" value = {{getstea}}>	
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "survival">survival(Wis): </label>
+								<input class="card" type = "text" name="survival" id="survival" value = {{getsurv}}>	
+							</td>
+						</tr>												
+					</table>
+				</tr>
+				<tr style = "height: 10%">
+					<table class = "child-2-1">
+						<th>senses</th>
+						<tr>
+							<td><label for = "passive insight">passive insight: </label>
+								<input class="card" type = "text" name="passiveInsight" id="passive insight" value = {{getpins}}>
+							</td>
+						</tr>
+						<tr>
+							<td><label for = "passivePerception">passive perception: </label>
+								<input class="card" type = "text" name="passivePerception" id="passivePerception" value = {{getpper}}>
+							</td>
+						</tr>
+					</table>
+				</tr>
+			</table>
+			<table class = "child-3">		
+				<tr style = "height: 50%">
+					<table class = "child-3-1">
+						<tr>
+							<td width="33%"><label for = "armor class">armor class</label><br/>
+								<textarea name="armorClass" id="armor class" value = {{getAC}}></textarea>
+							</td>
+							<td><label for = "initiative">initiative</label><br/>
+								<textarea name="initiative" id="initiative" value = {{getinitiative}}></textarea>
+							</td>
+							<td><label for = "speed">speed</label><br/>
+								<textarea name="speed" id="speed" value = {{getspeed}}></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<label for = "hitPoints">current hit points / hit point maximum: </label><br/>
+								<textarea name="hitPoints" id="hitPoints" value = {{getHP}}></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<label for = "temporary hit points">temporary hit points: </label><br/>
+								<textarea name="tHitPoints" id="temporary hit points" value = {{gettHP}}></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for = "hit dice">hit dice: </label><br/>
+								<textarea name="hitDice" id="hit dice" value = {{getHD}}>	</textarea>
+							</td>
+							<td colspan="2"><label for = "death saves">death saves: </label><br/>
+								<textarea name="deathSaves" id="death saves" value = {{getDS}}></textarea>
+							</td>
+						</tr>		
+					</table>
+				</tr>	
+				<tr style = "height: 51%">
+					<td>
+						<label for = "attack & spellcasting">attack & spellcasting: </label><br/>
+						<textarea name="attackSpellcasting" id="attack & spellcasting" value = {{getAS}}></textarea>
+					</td>
+				</tr>	
+			</table>
+			<table class = "child-4">		
+				<tr>
+					<td><label for = "personality traits">personality traits: </label>
+						<textarea name="personalityTraits" id="personality traits" value = {{getPT}}></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "ideals">ideals: </label><br/>
+						<textarea name="ideals" id="ideals" value = {{getideals}}></textarea>	
+					</td>
+				</tr>	
+				<tr>
+					<td><label for = "bonds">bonds: </label><br/>
+						<textarea name="bonds" id="bonds" value = {{getbonds}}></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td><label for = "flaws">flaws: </label><br/>
+						<textarea name="flaws" id="flaws" value = {{getflaws}}></textarea>
+					</td>
+				</tr>
+				<tr rowspan="3">
+					<td><label for = "treasures">treasures: </label><br/>
+						<textarea name="treasures" id="treasures" value = {{gettreasures}}></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table class = "parent-2">
+				<td width="25%"><label for = "proficienciesLanguages">other proficiencies & languages: </label><br/>
+					<textarea name="proficienciesLanguages" id="proficienciesLanguages" value = {{getlan}}></textarea>
+				</td>
+				<td><label for = "equipment">equipment: </label><br/>
+					<textarea name="equipment" id="equipment" value = {{getequip}}></textarea>
+				</td>
+				<td><label for = "features & traits">features & traits: </label><br/>
+					<textarea name="featuresTraits" id="features & traits" value = {{getFT}}></textarea>
+				</td>
+				<td><label for = "allies & organizations">allies & organizations: </label><br/>
+					<textarea name="alliesOrganizations" id="allies & organizations" value = {{getAO}}></textarea>
+				</td>
+			</table>
+		</div>
+		<div>
+			<table class = "parent-3">
+				<th colspan="4">spells</th>
+				<tr>
+					<td><label for = "spellcasting class">spellcasting class: </label>
+						<input class="card" type = "text" name="spellcasting class" id="spellcasting class" value = {{getSC}}>
+					</td>
+					<td><label for = "spellcasting ability">spellcasting ability: </label>
+						<input class="card" type ="text" name = "sAbility" id="spellcasting ability" value = {{getSCA}}>
+					</td>
+					<td><label for = "	spell save dc">spell save dc: </label>
+						<input class="card" type = "text" name="sSaveDc" id="spell save dc" value = {{getSSDC}}>
+					</td>
+					<td><label for = "spell attack bonus">spell attack bonus: </label>
+						<input class="card" type = "text" name="sAttackBonus" id="spell attack bonus" value = {{getSAB}}>	
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" style="height: 100px">
+						<textarea name="spells" id="spells" placeholder="list down your spells" value = {{getspells}}></textarea>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="text-align: center">
+			<input class = "button" type="submit" value="edit">
+		</div>
+	</form>
+</template>
