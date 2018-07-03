@@ -5,13 +5,21 @@
     <div id="messages">
       <div class="messages-list {{#if isLoading}}loading-list{{/if}}">
         {{#each messages}}
-          {{> message}}
+        {{> message}}
         {{/each}}
       </div>
     </div>
 
     <div class="message-input">
-      <input name="message" placeholder="Type your message here...">
+      <div class = "roll">
+       <form id="rollDice">
+        <input id="numDice" name="numDice" type="number" min="1" value = "1">
+        <div class="D"><p>D</p></div> 
+        <input id="numDice" name="diceNum" type="number" min="1" value = "6">
+        <input id="roll" type="submit" value="roll">  
+      </form> 
     </div>
+    <input name="message" placeholder="Type your message here...">
   </div>
+</div>
 </template>
