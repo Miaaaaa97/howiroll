@@ -19,16 +19,18 @@ let _buildMessage = ( template, text ) => {
 };
 
 let _checkIfCanInsert = ( message, event ) => {
-  return message !== '' && event.keyCode === 13;
+  return message !== '';
 };
 
-let _getMessage = ( template ) => {
-  let message = template.find( '[name="message"]' ).value;
-  return message.trim();
+let _getRollNum = ( template, sum ) => {
+ let numDice = template.find( '[name="numDice"]' ).value;
+ let diceNum = template.find( '[name="diceNum"]' ).value;
+ let message = "Roll " + numDice + "D" + diceNum +  ": " + sum;
+ return message;
 };
 
-export default function( event, template ) {
-  let text      = _getMessage( template ),
+export default function( event, template, sum ) {
+  let text      = _getRollNum( template, sum ),
   canInsert = _checkIfCanInsert( text, event );
 
   if ( canInsert ) {

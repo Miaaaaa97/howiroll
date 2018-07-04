@@ -1,0 +1,22 @@
+#numDice {
+	height: 28px;
+	width: 70px;
+	float: left;
+	margin-right: 8px;
+}
+
+.D {
+	font-size: 20px;
+	height: 28px;
+	padding: 3px 4px;
+	width: 50px;
+	float: left;
+	margin-right: 8px;
+}
+
+input#roll {
+	height: 28px;
+	width: 70px;
+	float: left;
+	margin-left: 8px;
+}
