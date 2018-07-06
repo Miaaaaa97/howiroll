@@ -70,12 +70,12 @@
 			<table class = "child-2">		
 				<tr>
 					<td><label for = "inspiration">inspiration: </label>
-						<input class="card" type = "text" name="inspiration" id="inspiration" value = {{getEP}}>
+						<input class="card" type = "text" name="inspiration" id="inspiration" value = {{getInspiration}}>
 					</td>
 				</tr>
 				<tr>
 					<td><label for = "proficiency bonus">proficiency bonus: </label>
-						<input class="card" type = "text" name="proficiency bonus" id="proficiency bonus" value = {{getEP}}>
+						<input class="card" type = "text" name="proficiency bonus" id="proficiency bonus" value = {{getPB}}>
 					</td>
 				</tr>
 				<tr style = "height: 30%">
@@ -118,7 +118,7 @@
 						<th>skills</th>
 						<tr>
 							<td><label for = "acrobatics">acrobatics(Dex): </label>
-								<input class="card" type = "text" name="acrobatics" id="acrobatics" value = {{acro}}>	
+								<input class="card" type = "text" name="acrobatics" id="acrobatics" value = {{getacro}}>	
 							</td>
 						</tr>
 						<tr>
@@ -253,7 +253,7 @@
 						<tr>
 							<td>
 								<label for = "hit dice">hit dice: </label><br/>
-								<textarea name="hitDice" id="hit dice" value = {{getHD}}>	</textarea>
+								<textarea name="hitDice" id="hit dice" value = {{getHD}}></textarea>
 							</td>
 							<td colspan="2"><label for = "death saves">death saves: </label><br/>
 								<textarea name="deathSaves" id="death saves" value = {{getDS}}></textarea>
@@ -276,22 +276,22 @@
 				</tr>
 				<tr>
 					<td><label for = "ideals">ideals: </label><br/>
-						<textarea name="ideals" id="ideals" value = {{getideals}}></textarea>	
+						<textarea name="ideals" id="ideals">{{getideals}}</textarea>	
 					</td>
 				</tr>	
 				<tr>
 					<td><label for = "bonds">bonds: </label><br/>
-						<textarea name="bonds" id="bonds" value = {{getbonds}}></textarea>
+						<textarea name="bonds" id="bonds">{{getbonds}}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td><label for = "flaws">flaws: </label><br/>
-						<textarea name="flaws" id="flaws" value = {{getflaws}}></textarea>
+						<textarea name="flaws" id="flaws">{{getflaws}}</textarea>
 					</td>
 				</tr>
 				<tr rowspan="3">
 					<td><label for = "treasures">treasures: </label><br/>
-						<textarea name="treasures" id="treasures" value = {{gettreasures}}></textarea>
+						<textarea name="treasures" id="treasures">{{gettreasures}}</textarea>
 					</td>
 				</tr>
 			</table>
@@ -299,16 +299,16 @@
 		<div>
 			<table class = "parent-2">
 				<td width="25%"><label for = "proficienciesLanguages">other proficiencies & languages: </label><br/>
-					<textarea name="proficienciesLanguages" id="proficienciesLanguages" value = {{getlan}}></textarea>
+					<textarea name="proficienciesLanguages" id="proficienciesLanguages">{{getlan}}</textarea>
 				</td>
 				<td><label for = "equipment">equipment: </label><br/>
-					<textarea name="equipment" id="equipment" value = {{getequip}}></textarea>
+					<textarea name="equipment" id="equipment">{{getequip}}</textarea>
 				</td>
 				<td><label for = "features & traits">features & traits: </label><br/>
-					<textarea name="featuresTraits" id="features & traits" value = {{getFT}}></textarea>
+					<textarea name="featuresTraits" id="features & traits">{{getFT}}</textarea>
 				</td>
 				<td><label for = "allies & organizations">allies & organizations: </label><br/>
-					<textarea name="alliesOrganizations" id="allies & organizations" value = {{getAO}}></textarea>
+					<textarea name="alliesOrganizations" id="allies & organizations">{{getAO}}</textarea>
 				</td>
 			</table>
 		</div>
@@ -331,7 +331,7 @@
 				</tr>
 				<tr>
 					<td colspan="4" style="height: 100px">
-						<textarea name="spells" id="spells" placeholder="list down your spells" value = {{getspells}}></textarea>
+						<textarea name="spells" id="spells">{{getspells}}</textarea>
 					</td>
 				</tr>
 			</table>
@@ -340,4 +340,7 @@
 			<input class = "button" type="submit" value="edit">
 		</div>
 	</form>
+	<div style="text-align: center">
+		<button class = "button" id = "removeButton">remove</button>
+	</div>
 </template>

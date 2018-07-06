@@ -1,6 +1,7 @@
 let _update = ( id, c ) => {
-	return CharacterCards.update(id, {
-		$set: {card: c},
+	return CharacterCards.update({"_id": id}, 
+	{
+		$set: {'card': c},
 	});
 };
 
