@@ -1,19 +1,39 @@
-Template.view.helpers({
-	"submit #characterCardV":function(event,instance) {
-		event.preventDefault();
-		const formData = $("#characterCard").serializeArray();
+Template.view.onCreated(function() {
+	Meteor.subscribe('getCards');
+});
+
+Template.view.events({
+	'click #removeButton': function() {
+		alert("removeing");
 		var id = Session.get("ID");
-		Meteor.call('updateCharacterCards',id, formData, (error) => {
+		Meteor.call('removeCharacterCards', id, (error) => {
 			if(error) {
-				alert("error");
+				alert(error.reason);
 			} else {
-				alert("You have successfully create a card!");
+				alert("You have successfully removed the card!");
 				$('#characterCard').trigger('reset');
 			}
 		});
 		FlowRouter.go('/cardCollection');
 	},
 
+	"submit #characterCardV":function(event,instance) {
+		event.preventDefault();
+		const formData = $("#characterCardV").serializeArray();
+		var id = Session.get("ID");
+		Meteor.call('updateCharacterCards',id, formData, (error) => {
+			if(error) {
+				alert(error.reason);
+			} else {
+				alert("You have successfully edited your card!");
+				$('#characterCard').trigger('reset');
+			}
+		});
+		FlowRouter.go('/cardCollection');
+	},
+});
+
+Template.view.helpers({
 	getName() {
 		var id = FlowRouter.getQueryParam("id");  
 		var data = CharacterCards.findOne({_id: id});
@@ -83,250 +103,254 @@ Template.view.helpers({
 		return card[12].value;
 	},
 
-	getststr() {
+	getInspiration() {
 		var card = Session.get("c");
 		return card[13].value;
 	},
 
-	getstdex() {
+	getPB() {
 		var card = Session.get("c");
 		return card[14].value;
 	},
 
-	getstcon() {
+	getststr() {
 		var card = Session.get("c");
 		return card[15].value;
 	},
 
-	getstint() {
+	getstdex() {
 		var card = Session.get("c");
 		return card[16].value;
 	},
 
-	getstwis() {
+	getstcon() {
 		var card = Session.get("c");
 		return card[17].value;
 	},
 
-	getstcha() {
+	getstint() {
 		var card = Session.get("c");
 		return card[18].value;
 	},
 
-	getacro() {
+	getstwis() {
 		var card = Session.get("c");
 		return card[19].value;
 	},
 
-	getanim() {
+	getstcha() {
 		var card = Session.get("c");
 		return card[20].value;
 	},
 
-	getarca() {
+	getacro() {
 		var card = Session.get("c");
 		return card[21].value;
 	},
 
-	getathl() {
+	getanim() {
 		var card = Session.get("c");
 		return card[22].value;
 	},
 
-	getdece() {
+	getarca() {
 		var card = Session.get("c");
 		return card[23].value;
 	},
 
-	gethist() {
+	getathl() {
 		var card = Session.get("c");
 		return card[24].value;
 	},
 
-	getinsi() {
+	getdece() {
 		var card = Session.get("c");
 		return card[25].value;
 	},
 
-	getinti() {
+	gethist() {
 		var card = Session.get("c");
 		return card[26].value;
 	},
 
-	getinve() {
+	getinsi() {
 		var card = Session.get("c");
 		return card[27].value;
 	},
 
-	getmedi() {
+	getinti() {
 		var card = Session.get("c");
 		return card[28].value;
 	},
 
-	getnatu() {
+	getinve() {
 		var card = Session.get("c");
 		return card[29].value;
 	},
 
-	getperc() {
+	getmedi() {
 		var card = Session.get("c");
 		return card[30].value;
 	},
 
-	getperf() {
+	getnatu() {
 		var card = Session.get("c");
 		return card[31].value;
 	},
 
-	getpers() {
+	getperc() {
 		var card = Session.get("c");
 		return card[32].value;
 	},
 
-	getreli() {
+	getperf() {
 		var card = Session.get("c");
 		return card[33].value;
 	},
 
-	getslei() {
+	getpers() {
 		var card = Session.get("c");
 		return card[34].value;
 	},
 
-	getstea() {
+	getreli() {
 		var card = Session.get("c");
 		return card[35].value;
 	},
 
-	getsurv() {
+	getslei() {
 		var card = Session.get("c");
 		return card[36].value;
 	},
 
-	getpins() {
+	getstea() {
 		var card = Session.get("c");
 		return card[37].value;
 	},
 
-	getpper() {
+	getsurv() {
 		var card = Session.get("c");
 		return card[38].value;
 	},
 
-	getAC() {
+	getpins() {
 		var card = Session.get("c");
 		return card[39].value;
 	},
 
-	getinitiative() {
+	getpper() {
 		var card = Session.get("c");
 		return card[40].value;
 	},
 
-	getspeed() {
+	getAC() {
 		var card = Session.get("c");
 		return card[41].value;
 	},
 
-	getHP() {
+	getinitiative() {
 		var card = Session.get("c");
 		return card[42].value;
 	},
 
-	gettHP() {
+	getspeed() {
 		var card = Session.get("c");
 		return card[43].value;
 	},
 
-	getHD() {
+	getHP() {
 		var card = Session.get("c");
 		return card[44].value;
 	},
 
-	getDS() {
+	gettHP() {
 		var card = Session.get("c");
 		return card[45].value;
 	},
 
-	getAS() {
+	getHD() {
 		var card = Session.get("c");
 		return card[46].value;
 	},
 
-	gePT() {
+	getDS() {
 		var card = Session.get("c");
 		return card[47].value;
 	},
 
-	getideals() {
+	getAS() {
 		var card = Session.get("c");
 		return card[48].value;
 	},
 
-	getbonds() {
+	getPT() {
 		var card = Session.get("c");
 		return card[49].value;
 	},
 
-	getflaws() {
+	getideals() {
 		var card = Session.get("c");
 		return card[50].value;
 	},
 
-	gettreasures() {
+	getbonds() {
 		var card = Session.get("c");
 		return card[51].value;
 	},
 
-	getlan() {
+	getflaws() {
 		var card = Session.get("c");
 		return card[52].value;
 	},
 
-	getequip() {
+	gettreasures() {
 		var card = Session.get("c");
 		return card[53].value;
 	},
 
-	getFT() {
+	getlan() {
 		var card = Session.get("c");
 		return card[54].value;
 	},
 
-	getAO() {
+	getequip() {
 		var card = Session.get("c");
 		return card[55].value;
 	},
 
-	getSC() {
+	getFT() {
 		var card = Session.get("c");
 		return card[56].value;
 	},
 
-	getSCA() {
+	getAO() {
 		var card = Session.get("c");
 		return card[57].value;
 	},
 
-	getSSDC() {
+	getSC() {
 		var card = Session.get("c");
 		return card[58].value;
 	},
 
-	getSAB() {
+	getSCA() {
 		var card = Session.get("c");
 		return card[59].value;
 	},
 
-	getspells() {
+	getSSDC() {
 		var card = Session.get("c");
 		return card[60].value;
 	},
 
+	getSAB() {
+		var card = Session.get("c");
+		return card[61].value;
+	},
 
-
+	getspells() {
+		var card = Session.get("c");
+		return card[62].value;
+	},
 });
 
-Template.view.onCreated(function() {
-	Meteor.subscribe('getCards');
-});

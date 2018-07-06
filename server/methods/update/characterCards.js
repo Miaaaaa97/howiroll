@@ -1,11 +1,11 @@
-import insertCard from '../../modules/insert-card';
 import updateCard from '../../modules/update-card';
 
 Meteor.methods({
-	insertCharacterCards( card ) {
+	updateCharacterCards(id, card) {
 		check(card, [Match.Any]);
+		check(id, String);
 		try {
-			insertCard( card );
+			updateCard( id, card );
 		} catch ( exception ) {
 			throw new Meteor.Error( '500', `${ exception }` );
 		}

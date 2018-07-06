@@ -22,7 +22,7 @@ th {
 textarea {
 	height:75%;
 	width:80%; 
-	text-align:center
+	text-align:left;
 	vertical-align:bottom;
 	border: 0px;
 }
