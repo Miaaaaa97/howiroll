@@ -1,3 +1,3 @@
 Meteor.publish( 'getCards', function() {
-	return CharacterCards.find({});
+	return CharacterCards.find({owner: this.userId});
 });

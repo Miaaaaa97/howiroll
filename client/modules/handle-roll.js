@@ -1,7 +1,7 @@
 import setScroll from './set-scroll';
 
 let _handleInsert = ( message, event, template ) => {
-  Meteor.call( 'insertMessage', message, ( error ) => {
+  Meteor.call( 'insertRolls', message, ( error ) => {
     if ( error ) {
       Bert.alert( error.reason, 'danger' );
     } else {
@@ -25,7 +25,9 @@ let _checkIfCanInsert = ( message, event ) => {
 let _getRollNum = ( template, sum ) => {
  let numDice = template.find( '[name="numDice"]' ).value;
  let diceNum = template.find( '[name="diceNum"]' ).value;
- let message = "Roll " + numDice + "D" + diceNum +  ": " + sum;
+ let user = Meteor.user();
+ let message = user.profile.name.first + " " + user.profile.name.last + " " +
+ "rolls " + numDice + "D" + diceNum +  ": " + sum;
  return message;
 };
 

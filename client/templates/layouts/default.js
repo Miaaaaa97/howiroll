@@ -1,10 +1,10 @@
 const handleRedirect = ( routes, redirect ) => {
 	let currentRoute = FlowRouter.getRouteName();
-	
 	if ( routes.indexOf( currentRoute ) > -1 ) {
 		FlowRouter.go( redirect );
 		return true;
 	}
+	return false;
 };
 
 Template.default.onRendered( () => {
@@ -21,7 +21,7 @@ Template.default.helpers({
 		return Meteor.loggingIn();
 	},
 	authenticated() {
-		return !Meteor.loggingIn() && Meteor.user();
+		return !Meteor.loggingIn() && Meteor.userId();
 	},
 	redirectAuthenticated() {
 		return handleRedirect([
@@ -29,9 +29,15 @@ Template.default.helpers({
 			'signup',
 			'recover-password',
 			'reset-password'
-			], '/messages/general' );
+			], '/dashboard' );
 	},
 	redirectPublic() {
-		return handleRedirect( [ 'channel' ], '/login' );
-	}
+		return handleRedirect( [ 
+			'channel',
+			'dashboard',
+			'cardCollection',
+			'characterCard',
+			], '/login' );
+	},
 });
+

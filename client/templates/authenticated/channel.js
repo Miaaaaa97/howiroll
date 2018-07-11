@@ -40,6 +40,6 @@ Template.channel.events({
 		for (var i = 0; i < numDice; i++) {
 			sum += 1 + Math.round(Math.random() * (diceNum - 1));
 		}
-		handleRoll( event, template, sum);
+		handleRoll(event, template, sum);
 	},
 });
