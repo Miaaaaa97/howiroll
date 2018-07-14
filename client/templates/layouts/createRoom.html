@@ -1,52 +1,15 @@
 <template name="createRoom">
-	<div>
-		<label>
-			Room name: 
-		</label>
-		<input type="text" name="password">
-
-	</div>
-	<div>
-
-		<label>
-			Password: 
-		</label>
-		<input type="text" name="password">
-
-	</div>
-	<div>	
-
-		<label> Player number: </label>
-		<input list="playerNumber">
-		<datalist id="playerNumber">
-			<option value="3"></option>
-			<option value="4"></option>
-			<option value="5"></option>
-			<option value="6"></option>
-			<option value="7"></option>
-			<option value="8"></option>
-			<option value="9"></option>
-			<option value="10"></option>
-		</datalist>
-		<input type="submit">
-
-	</div>
-
-	<div>
-
-		<label>
-			Allow public to view
-		</label>
-		<input type="radio" name="choice" value="yes">Yes
-		<input type="radio" name="choice" value="no">No
-	</div>
-	<div>
-		<a href = '/messages/:channel'>
-			<button>
-				<span>
-					Submit
-				</span>
-			</button>
-		</a>
-	</div>
+	<form>
+		Room name: <br>
+		<input type="text" name = "roomname"><br>
+		Game Introduction: <br>
+		<input type="text" name = "intro"><br>
+		Password: <br>
+		<input type="text" name = "password"><br>
+		Number of Players: <br>
+		<input type="number" name = "numplayers" min="3" max="10"><br>
+		Allow public to view:<br>
+		Yes <input type="radio" name="choice" value="yes">   No <input type="radio" name="choice" value="no"><br>
+		<input type="submit" value = "submit">
+	</form>
 </template>

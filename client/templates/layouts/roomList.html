@@ -4,4 +4,9 @@
 		<h1> Welcome To RoomList </h1> 
 		
 	</div>
-</template>
+	<ul>
+        {{#each roomlist}}
+            <li>{{name}}</li>
+        {{/each}}
+    </ul>
+</template>	
