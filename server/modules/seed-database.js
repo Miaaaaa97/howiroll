@@ -26,7 +26,13 @@ let _seedUsers = () => {
 let _seedChannels = () => {
 	Seed( 'channels', {
 		environments: [ 'development', 'staging', 'production' ],
-		data: [ { name: 'general' } ]
+		data: [ { 
+			name: 'general', 
+		},{ 
+			name: 'PCs', 
+		},{ 
+			name: 'GMs', 
+		}]
 	});
 };
 
