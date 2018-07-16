@@ -14,5 +14,23 @@ Meteor.methods({
     		public: public,
     		createdBy: currentUserId,
     	});
+    },
+    'joinRoom': function(roomId, roomname) {
+        var currentUserId = Meteor.userId();
+        check(roomId, String);
+        check(roomname, String);
+        Roomjoin.insert({
+            roomId: roomId,
+            roomname: roomname,
+            playerId: currentUserId,
+        });
+    },
+    'exitgame': function(roomId) {
+        var currentUserId = Meteor.userId();
+        Roomjoin.deleteOne({roomId: roomId, playerId: currentUserId});
+    },
+    'deletegame': function(roomId) {
+        Rooms.deleteOne({_id: roomId});
+        Roomjoin.deleteMany({roomId: roomId});
     }
 });

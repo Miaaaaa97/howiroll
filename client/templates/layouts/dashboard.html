@@ -24,7 +24,22 @@
 	</div>
 	<div class = "joinedGames">
 		<div>
-			<h1> joined games: to be implemented </h1>
+			<h1> Joined Games </h1>
 		</div>
+		<ul>
+        {{#each joinedrooms}}
+            <li class="room {{selectrm}}">{{roomname}}</li>
+        {{/each}}
+        </ul>
+		<div>
+			<h1> Created Games </h1>
+		</div>
+		<ul>
+        {{#each createdrooms}}
+            <li class="room {{selectrm}}">{{name}}</li>
+        {{/each}}
+        </ul>
+        <button class="enter"> Enter game </button>
+        <!-- <button class="endgame"> End game </button> -->
 	</div>
 </template>

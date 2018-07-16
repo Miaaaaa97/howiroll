@@ -6,7 +6,10 @@
 	</div>
 	<ul>
         {{#each roomlist}}
-            <li>{{name}}: {{intro}}</li>
+            <li class="room {{selectrm}}">{{name}}: {{intro}}</li>
         {{/each}}
     </ul>
+    <div>
+    	<button class="join"> Join </button>
+    </div>
 </template>	
