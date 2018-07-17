@@ -28,7 +28,7 @@
 		</div>
 		<ul>
         {{#each joinedrooms}}
-            <li class="room {{selectrm}}">{{roomname}}</li>
+            <li class="joinedroom {{selectjoinedrm}}">{{roomname}}</li>
         {{/each}}
         </ul>
 		<div>
@@ -36,7 +36,7 @@
 		</div>
 		<ul>
         {{#each createdrooms}}
-            <li class="room {{selectrm}}">{{name}}</li>
+            <li class="createdroom {{selectcreatedrm}}">{{name}}</li>
         {{/each}}
         </ul>
         <button class="enter"> Enter game </button>

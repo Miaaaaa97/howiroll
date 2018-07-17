@@ -2,8 +2,14 @@ Meteor.subscribe('joinedrooms');
 Meteor.subscribe('createdrooms');
 
 Template.dashboard.events({
-	'click .room': function() {
+	'click .createdroom': function() {
 		var roomId = this._id;
+		var roomname = this.name;
+		Session.set('dashboardSelect', roomId);
+		Session.set('dashboardSelectName', roomname);
+	},
+	'click .joinedroom': function() {
+		var roomId = this.roomId;
 		var roomname = this.name;
 		Session.set('dashboardSelect', roomId);
 		Session.set('dashboardSelectName', roomname);
@@ -11,7 +17,7 @@ Template.dashboard.events({
 	'click .enter': function() {
 		var current = Session.get('dashboardSelect');
 		Session.set('playingGame', current);
-		FlowRouter.go('/roompage');
+		FlowRouter.go('/messages/general');
 	},
 	'click. endgame': function() {
 		console.log("you clicked delete");
@@ -39,8 +45,15 @@ Template.dashboard.helpers({
 		var currentUserId = Meteor.userId();
 		return Rooms.find({createdBy: currentUserId});
 	},
-	'selectrm': function() {
+	'selectcreatedrm': function() {
 		var roomId = this._id;
+		var selected = Session.get('dashboardSelect');
+		if(roomId == selected) {
+			return "selected";
+		}
+	},
+	'selectjoinedrm': function() {
+		var roomId = this.roomId;
 		var selected = Session.get('dashboardSelect');
 		if(roomId == selected) {
 			return "selected";

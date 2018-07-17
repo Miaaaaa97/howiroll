@@ -34,6 +34,10 @@ let MessagesSchema = new SimpleSchema({
   'message': {
     type: String,
     label: 'The content of this message.'
+  },
+  'roomid': {
+    type: String,
+    label: 'The ID of the room this message belongs to.'
   }
 });
 
