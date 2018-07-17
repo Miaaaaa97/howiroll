@@ -23,7 +23,7 @@ Template.roomList.events({
 		    Bert.alert('Joined game successfully!', 'success');
 		}
 	}
-})
+});
 
 Template.roomList.helpers({
 	'roomlist': function() {
@@ -35,5 +35,6 @@ Template.roomList.helpers({
 		if(roomId == selected) {
 			return "selected";
 		}
-	}
-})
+	},
+	'RoomsIndex': () => RoomsIndex
+});

@@ -26,11 +26,13 @@ Meteor.methods({
         });
     },
     'exitgame': function(roomId) {
+        check(roomId, String);
         var currentUserId = Meteor.userId();
-        Roomjoin.deleteOne({roomId: roomId, playerId: currentUserId});
+        Roomjoin.remove({roomId: roomId, playerId: currentUserId});
     },
     'deletegame': function(roomId) {
-        Rooms.deleteOne({_id: roomId});
-        Roomjoin.deleteMany({roomId: roomId});
+        check(roomId, String);
+        Rooms.remove({_id: roomId});
+        Roomjoin.remove({roomId: roomId});
     }
 });
