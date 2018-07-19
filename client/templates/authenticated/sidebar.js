@@ -1,7 +1,7 @@
 Template.sidebar.onCreated( () => {
   let template = Template.instance();
   template.subscribe( 'sidebar' );
-  Meteor.subscribe('rooms');
+  Meteor.subscribe('createdrooms');
   Meteor.subscribe('getCardsForGM');
   Session.set("c", null);
 });
