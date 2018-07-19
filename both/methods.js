@@ -3,6 +3,7 @@ Meteor.methods({
     	var currentUserId = Meteor.userId();
         var currentUserName = Meteor.user().username;
         var timestring = moment().format('MMMM Do YYYY, h:mm:ss a');
+
         check(name, String);
         check(intro, String);
         check(password, String);
@@ -35,6 +36,7 @@ Meteor.methods({
         });
     },
 
+
     'selectCard': function(roomId, cardId) {
         var currentUserId = Meteor.userId();
         check(roomId, String);
@@ -45,6 +47,7 @@ Meteor.methods({
             $set: {"participants.$.card": cardId}
         });
     },
+
 
     'exitgame': function(roomId) {
         check(roomId, String);

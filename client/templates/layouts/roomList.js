@@ -1,7 +1,32 @@
-Meteor.subscribe('joinedrooms');
-Meteor.subscribe('createdrooms');
+
+
+Template.roomList.onCreated( () => {
+  let template = Template.instance();
+
+  template.searchQuery = new ReactiveVar();
+  template.searching   = new ReactiveVar( false );
+
+  template.autorun( () => {
+    template.subscribe( 'searchrooms', template.searchQuery.get(), () => {
+      setTimeout( () => {
+        template.searching.set( false );
+      }, 300 );
+    });
+  });
+});
 
 Template.roomList.events({
+	'keyup [name="search"]' ( event, template ) {
+        let value = event.target.value.trim();
+        if ( value !== '' ) { // && event.keyCode === 13 
+            template.searchQuery.set( value );
+            template.searching.set( true );
+        }
+        if ( value === '' ) {
+            template.searchQuery.set( value );
+        }
+    },
+
 	'click .room': function() {
 		var roomId = this._id;
 		var roomname = this.name;
@@ -40,15 +65,25 @@ Template.roomList.events({
 });
 
 Template.roomList.helpers({
-	'roomlist': function() {
-		return Rooms.find();
-	},
+	searching() {
+        return Template.instance().searching.get();
+    },
+    query() {
+        return Template.instance().searchQuery.get();
+    },
+    rooms() {
+        var rooms = Rooms.find();
+        if ( rooms ) {
+            return rooms;
+        }
+    },
+
 	'selectrm': function() {
 		var roomId = this._id;
 		var selected = Session.get('selectedRoom');
 		if(roomId == selected) {
 			return "selected";
 		}
-	},
-	'RoomsIndex': () => RoomsIndex
+	}
+
 });

@@ -4,16 +4,33 @@
 		<h1> Welcome To RoomList </h1> 
 		
 	</div>
-	<form>
-		<input type="text" name="searchtext" required="required" placeholder="Key in room name to search...">
-		<input type="submit" value="Search"><br>
-	</form>
+
+	<input type="text" name="search" class="form-control" placeholder="Search a room..."><br>
+
 	<br>
-	<ul>
-        {{#each roomlist}}
-            <li class="room {{selectrm}}">{{name}}: {{intro}}<br>
-                created by: {{createdByname}} , created at: {{createdAt}} </li>
-        {{/each}}
+<!-- 	{{#if searching}}
+        {{> loading}}
+    {{else}}
+        {{#each rooms}}
+            <li class="room {{selectrm}}">
+             <span class="pull-left"><strong>{{name}}</strong>: {{intro}}, created by: {{createdByname}}</span>
+             <span class="pull-right">{{createdAt}}</span>
+            </li>
+      {{else}}
+        <p class="alert alert-warning">Nothing found for {{query}}. Sorry.</p>
+      {{/each}}
+    {{/if}} -->
+	<ul class="list-group">
+		{{#if searching}}
+		    {{>loading}}
+		{{else}}
+            {{#each rooms}}
+                <li class="room {{selectrm}}">{{name}}: {{intro}}<br>
+                    created by: {{createdByname}} , created at: {{createdAt}} </li>
+            {{else}}
+                <p class="alert alert-warning">Nothing found for {{query}}. </p>
+            {{/each}}
+        {{/if}}
     </ul>
     <div>
     	<button class="join"> Join </button>

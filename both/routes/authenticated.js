@@ -19,4 +19,5 @@ authenticatedRoutes.route( '/cardDecision/:roomid/:cardid', {
 	action() {
 		BlazeLayout.render( 'default', { yield: 'cardDecision' } );
 	}
+
 });

@@ -1,5 +1,14 @@
-Meteor.subscribe('joinedrooms');
-Meteor.subscribe('createdrooms');
+
+// Meteor.subscribe('createdrooms');
+
+Template.dashboard.onCreated( () => {
+  let template = Template.instance();
+
+  template.autorun( () => {
+    template.subscribe( 'createdrooms');
+  });
+});
+
 
 Template.dashboard.events({
 	'click .rooms': function() {
