@@ -77,3 +77,12 @@ publicRoutes.route( '/view', {
 		BlazeLayout.render( 'default', { yield: 'view' } );
 	}
 });
+
+
+publicRoutes.route( '/roompage', {
+	name: 'roompage',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'roompage' } );
+	}
+});
+
