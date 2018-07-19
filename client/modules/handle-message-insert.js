@@ -11,12 +11,11 @@ let _handleInsert = ( message, event, template ) => {
 };
 
 let _buildMessage = ( template, text ) => {
-  var room = Session.get('playingGame');
   return {
     destination: FlowRouter.getParam( 'channel' ).replace( '@', '' ),
     isDirect: template.isDirect.get(),
     message: text,
-    roomid: room
+    roomid: FlowRouter.getParam('roomid')
   };
 };
 

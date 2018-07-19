@@ -20,7 +20,7 @@ Template.channel.helpers({
 		return FlowRouter.getParam( 'channel' );
 	},
 	messages() {
-		var roomid = Session.get('playingGame');
+		var roomid = FlowRouter.getParam('roomid');
 		let messages = Messages.find( {roomid: roomid}, { sort: { timestamp: 1 } } );
 		if ( messages ) {
 			return sortMessages( messages );

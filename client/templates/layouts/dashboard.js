@@ -16,8 +16,7 @@ Template.dashboard.events({
 	},
 	'click .enter': function() {
 		var current = Session.get('dashboardSelect');
-		Session.set('playingGame', current);
-		FlowRouter.go('/messages/general');
+		FlowRouter.go('/messages/general/' + current);
 	},
 	'click .endgame': function() {
 		var roomId = Session.get('dashboardSelect');

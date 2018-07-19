@@ -4,7 +4,7 @@
     <ul>
       {{#each channel in channels}}
         <li class="{{currentChannel channel.name}}">
-          <a href="/messages/{{channel.name}}">
+          <a href="/messages/{{channel.name}}/{{roomid}}">
             #{{channel.name}}
           </a>
         </li>

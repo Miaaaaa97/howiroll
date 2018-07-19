@@ -26,5 +26,8 @@ Template.sidebar.helpers({
     if ( name ) {
       return `${ name.first } ${ name.last }`;
     }
+  },
+  roomid() {
+    return FlowRouter.getParam('roomid');
   }
 });
