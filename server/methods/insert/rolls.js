@@ -5,7 +5,8 @@ Meteor.methods({
     check( message, {
       destination: String,
       isDirect: Boolean,
-      message: String
+      message: String,
+      roomid: String,
     });
 
     try {

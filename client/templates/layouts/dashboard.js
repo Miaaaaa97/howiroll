@@ -1,3 +1,4 @@
+
 // Meteor.subscribe('createdrooms');
 
 Template.dashboard.onCreated( () => {
@@ -7,6 +8,7 @@ Template.dashboard.onCreated( () => {
     template.subscribe( 'createdrooms');
   });
 });
+
 
 Template.dashboard.events({
 	'click .rooms': function() {

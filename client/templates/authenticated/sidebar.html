@@ -1,14 +1,43 @@
 <template name="sidebar">
-  <aside class="sidebar">
-    <h5>Channels</h5>
-    <ul>
-      {{#each channel in channels}}
-        <li class="{{currentChannel channel.name}}">
-          <a href="/messages/{{channel.name}}/{{roomid}}">
-            #{{channel.name}}
-          </a>
-        </li>
-      {{/each}}
-    </ul>
-  </aside>
+
+	<aside class="sidebar">
+		<h5>Channels</h5>
+		<ul>
+			{{#each channel in channels}}
+			<li class="{{currentChannel channel.name}}">
+				<a href={{dirChannel channel.name}}>
+					#{{channel.name}}
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+		{{#if isGM}}
+		<div>
+			<h3>click to view each PC</h3>
+			<ul>
+				{{#each participant in participants}}
+				<li>
+					<a href="{{getIds participant}}">
+						{{displayCard participant}}
+					</a>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+		{{else}}
+		<div>
+			{{#if hasCard}}
+			<h1>{{characterName}}</h1>
+			<ul>
+				<li>strength {{getStr}}</li>
+				<li>dexterity {{getDex}}</li>
+				<li>constitution {{getCons}}</li>
+				<li>intelligence {{getInt}}</li>
+				<li>wisdom {{getWis}}</li>
+				<li>charisma {{getCha}}</li>
+			</ul>
+			{{/if}}
+		</div>
+		{{/if}}
+	</aside>
 </template>

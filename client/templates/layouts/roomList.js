@@ -1,4 +1,5 @@
 
+
 Template.roomList.onCreated( () => {
   let template = Template.instance();
 
@@ -25,6 +26,7 @@ Template.roomList.events({
             template.searchQuery.set( value );
         }
     },
+
 	'click .room': function() {
 		var roomId = this._id;
 		var roomname = this.name;
@@ -75,6 +77,7 @@ Template.roomList.helpers({
             return rooms;
         }
     },
+
 	'selectrm': function() {
 		var roomId = this._id;
 		var selected = Session.get('selectedRoom');
@@ -82,4 +85,5 @@ Template.roomList.helpers({
 			return "selected";
 		}
 	}
+
 });
