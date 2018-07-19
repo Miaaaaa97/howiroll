@@ -27,16 +27,8 @@
 			<h1> Joined Games </h1>
 		</div>
 		<ul>
-        {{#each joinedrooms}}
-            <li class="joinedroom {{selectjoinedrm}}">{{roomname}}</li>
-        {{/each}}
-        </ul>
-		<div>
-			<h1> Created Games </h1>
-		</div>
-		<ul>
-        {{#each createdrooms}}
-            <li class="createdroom {{selectcreatedrm}}">{{name}}</li>
+        {{#each rooms}}
+            <li class="rooms {{selectrm}}">{{name}}</li>
         {{/each}}
         </ul>
         <button class="enter"> Enter game </button>

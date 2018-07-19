@@ -2,14 +2,8 @@ Meteor.subscribe('joinedrooms');
 Meteor.subscribe('createdrooms');
 
 Template.dashboard.events({
-	'click .createdroom': function() {
+	'click .rooms': function() {
 		var roomId = this._id;
-		var roomname = this.name;
-		Session.set('dashboardSelect', roomId);
-		Session.set('dashboardSelectName', roomname);
-	},
-	'click .joinedroom': function() {
-		var roomId = this.roomId;
 		var roomname = this.name;
 		Session.set('dashboardSelect', roomId);
 		Session.set('dashboardSelectName', roomname);
@@ -21,7 +15,7 @@ Template.dashboard.events({
 	'click .endgame': function() {
 		var roomId = Session.get('dashboardSelect');
 		var currentUserId = Meteor.userId();
-		var joined = Roomjoin.findOne({roomId: roomId, playerId: currentUserId});
+		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
 		var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
 		if (joined) {
 			Bert.alert('Exited game successfully!', 'success');
@@ -36,25 +30,15 @@ Template.dashboard.events({
 });
 
 Template.dashboard.helpers({
-	'joinedrooms': function() {
-		return Roomjoin.find();
-	},
-	'createdrooms': function() {
+	'rooms': function() {
 		var currentUserId = Meteor.userId();
-		return Rooms.find({createdBy: currentUserId});
+		return Rooms.find({$or: [{createdBy: currentUserId}, { 'participants.name': currentUserId  }]});
 	},
-	'selectcreatedrm': function() {
+	'selectrm': function() {
 		var roomId = this._id;
 		var selected = Session.get('dashboardSelect');
 		if(roomId == selected) {
 			return "selected";
 		}
 	},
-	'selectjoinedrm': function() {
-		var roomId = this.roomId;
-		var selected = Session.get('dashboardSelect');
-		if(roomId == selected) {
-			return "selected";
-		}
-	}
 });

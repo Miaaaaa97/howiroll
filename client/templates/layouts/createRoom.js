@@ -11,7 +11,7 @@ Template.createRoom.events({
         } 
         check(public, Boolean);
         Meteor.call('createRoom', roomname, intro, password, numplayers, public);
-        Bert.alert('Your room has been created!', 'success')
+        Bert.alert('Your room has been created!', 'success');
         FlowRouter.go('/roomList');
     }
 });

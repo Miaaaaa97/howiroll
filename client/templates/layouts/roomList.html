@@ -11,7 +11,8 @@
 	<br>
 	<ul>
         {{#each roomlist}}
-            <li class="room {{selectrm}}">{{name}}: {{intro}}</li>
+            <li class="room {{selectrm}}">{{name}}: {{intro}}<br>
+                created by: {{createdByname}} , created at: {{createdAt}} </li>
         {{/each}}
     </ul>
     <div>

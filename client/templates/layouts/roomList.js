@@ -18,12 +18,12 @@ Template.roomList.events({
 		var public = Session.get('selectedpublic');
 		var pw = Session.get('selectedpw');
 		var currentUserId = Meteor.userId();
-		var joined = Roomjoin.findOne({roomId: roomId, playerId: currentUserId});
+		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
 		var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
-		if (joined) {
-			Bert.alert('You already joined this game!', 'warning');
-		} else if (created) {
+		if (created) {
 			Bert.alert('You are already the GameMaster!', 'warning');
+		} else if (joined != undefined) {
+			Bert.alert('You already joined this game!', 'warning');
 		} else if (public == true) {
 		    Meteor.call('joinRoom', roomId, roomname);
 		    Bert.alert('Joined game successfully!', 'success');
