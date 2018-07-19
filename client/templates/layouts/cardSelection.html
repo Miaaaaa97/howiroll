@@ -1,0 +1,15 @@
+<template name="cardSelection">
+	<div class="cardCollection">
+		<h2> Pls Select The Card You Wish To Use </h2>
+		<ul>
+			{{#each cards}}		
+			<a id = "view" href = {{findId _id}}>
+				<li class="cardName">
+					{{getName card}}		
+				</li>
+			</a>
+			
+			{{/each}}
+		</ul>	
+	</div>
+</template>

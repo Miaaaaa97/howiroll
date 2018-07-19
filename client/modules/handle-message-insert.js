@@ -14,7 +14,8 @@ let _buildMessage = ( template, text ) => {
   return {
     destination: FlowRouter.getParam( 'channel' ).replace( '@', '' ),
     isDirect: template.isDirect.get(),
-    message: text
+    message: text,
+    roomid: FlowRouter.getParam('roomid')
   };
 };
 

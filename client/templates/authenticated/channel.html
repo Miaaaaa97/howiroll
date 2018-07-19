@@ -11,11 +11,17 @@
     </div>
 
     <div class="message-input">
+      {{#if isPC}}
+      <div class = "buttons">
+        <button id = "selectCard">select card</button>
+        <button id = "viewCard">view & edit</button>
+      </div>
+      {{/if}}
       <div class = "roll">
        <form id="rollDice">
-        <input id="numDice" name="numDice" type="number" min="1" value = "1">
+        <input id="numDice" name="numDice" type="number" min="1" max = "100" value = "1">
         <div class="D"><p>D</p></div> 
-        <input id="numDice" name="diceNum" type="number" min="1" value = "6">
+        <input id="numDice" name="diceNum" type="number" min="1" max = "100" value = "6">
         <input id="roll" type="submit" value="roll">  
       </form> 
     </div>
