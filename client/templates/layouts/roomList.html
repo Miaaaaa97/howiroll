@@ -4,6 +4,11 @@
 		<h1> Welcome To RoomList </h1> 
 		
 	</div>
+	<form>
+		<input type="text" name="searchtext" required="required" placeholder="Key in room name to search...">
+		<input type="submit" value="Search"><br>
+	</form>
+	<br>
 	<ul>
         {{#each roomlist}}
             <li class="room {{selectrm}}">{{name}}: {{intro}}</li>

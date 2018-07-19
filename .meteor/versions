@@ -31,6 +31,9 @@ ddp-rate-limiter@1.0.1-beta.12
 ddp-server@1.2.3-beta.12
 deps@1.0.9
 diff-sequence@1.0.2-beta.12
+easy:search@2.0.9
+easysearch:components@2.0.9
+easysearch:core@2.0.9
 ecmascript@0.4.0-beta.12
 ecmascript-runtime@0.2.7-beta.12
 ejson@1.0.8-beta.12
@@ -69,6 +72,12 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.40-beta.12
 observe-sequence@1.0.8-beta.12
 ordered-dict@1.0.4
+peerlibrary:assert@0.2.5
+peerlibrary:base-component@0.14.0
+peerlibrary:blaze-components@0.16.2
+peerlibrary:computed-field@0.3.1
+peerlibrary:data-lookup@0.1.0
+peerlibrary:reactive-field@0.1.0
 promise@0.5.2-beta.12
 random@1.0.6-beta.12
 rate-limit@1.0.1-beta.12
