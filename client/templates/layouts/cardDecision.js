@@ -23,18 +23,26 @@ Template.cardDecision.events({
 		const formData = $("#characterCardV").serializeArray();
 		var id = Session.get("ID");
 		var roomid = FlowRouter.getParam('roomid');
-		Meteor.call('updateCharacterCards',id, formData, (error) => {
-			if(error) {
-				alert(error.reason);
-			} else {
-				
-				$('#characterCard').trigger('reset');
-			}
-		});
+		var owner = Session.get("owner");
+		if (owner == "public") {
+			Meteor.call('insertCharacterCards',formData, (error) => {
+				if(error) {
+					alert("error");
+				} else {
+					$('#characterCard').trigger('reset');
+				}
+			});
+		} else {
+			Meteor.call('updateCharacterCards',id, formData, (error) => {
+				if(error) {
+					alert(error.reason);
+				} else {	
+					$('#characterCard').trigger('reset');
+				}
+			});
+		}
 		Meteor.call('selectCard', roomid, id);
-		Bert.alert("Successful", "success");
 		FlowRouter.go("/messages/general/" + roomid);
-
 	},
 });
 
@@ -42,10 +50,10 @@ Template.cardDecision.helpers({
 	getName() {
 		var id = FlowRouter.getParam("cardid");  
 		var data = CharacterCards.findOne({_id: id});
-		var card = data.card;
-		Session.set("c", card);
+		Session.set("owner", data.owner);
+		Session.set("c", data.card);
 		Session.set("ID", id);
-		return card[0].value;
+		return data.card[0].value;
 	},
 
 	getClass() {

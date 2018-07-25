@@ -4,7 +4,6 @@ Template.view.onCreated(function() {
 
 Template.view.events({
 	'click #removeButton': function() {
-		alert("removeing");
 		var id = Session.get("ID");
 		Meteor.call('removeCharacterCards', id, (error) => {
 			if(error) {
@@ -21,14 +20,24 @@ Template.view.events({
 		event.preventDefault();
 		const formData = $("#characterCardV").serializeArray();
 		var id = Session.get("ID");
-		Meteor.call('updateCharacterCards',id, formData, (error) => {
-			if(error) {
-				alert(error.reason);
-			} else {
-				alert("You have successfully edited your card!");
-				$('#characterCard').trigger('reset');
-			}
-		});
+		var owner = Session.get("owner");
+		if (owner == "public") {
+			Meteor.call('insertCharacterCards',formData, (error) => {
+				if(error) {
+					alert("error");
+				} else {
+					$('#characterCard').trigger('reset');
+				}
+			});
+		} else {
+			Meteor.call('updateCharacterCards',id, formData, (error) => {
+				if(error) {
+					alert(error.reason);
+				} else {	
+					$('#characterCard').trigger('reset');
+				}
+			});
+		}
 		FlowRouter.go('/cardCollection');
 	},
 });
@@ -38,6 +47,7 @@ Template.view.helpers({
 		var id = FlowRouter.getQueryParam("id");  
 		var data = CharacterCards.findOne({_id: id});
 		var card = data.card;
+		Session.set("owner", data.owner);
 		Session.set("c", card);
 		Session.set("ID", id);
 		return card[0].value;

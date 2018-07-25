@@ -1,7 +1,7 @@
 Template.sidebar.onCreated( () => {
   let template = Template.instance();
   template.subscribe( 'sidebar' );
-  Meteor.subscribe('rooms');
+  Meteor.subscribe('createdrooms');
   Meteor.subscribe('getCardsForGM');
   Session.set("c", null);
 });
@@ -34,9 +34,6 @@ Template.sidebar.helpers({
     if (participants[j].name == currentUser) {
       cardid = participants[j].card;
     }
-  },
-  roomid() {
-    return FlowRouter.getParam('roomid');
   }
   var card = CharacterCards.findOne(cardid).card;
   if (card) {
@@ -44,6 +41,10 @@ Template.sidebar.helpers({
     return true;
   }
   return false;
+},
+
+roomid() {
+    return FlowRouter.getParam('roomid');
 },
 
 characterName() {
