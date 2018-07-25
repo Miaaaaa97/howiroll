@@ -19,5 +19,56 @@ authenticatedRoutes.route( '/cardDecision/:roomid/:cardid', {
 	action() {
 		BlazeLayout.render( 'default', { yield: 'cardDecision' } );
 	}
+});
 
+authenticatedRoutes.route( '/dashboard', {
+	name: 'dashboard',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'dashboard' } );
+	}
+});
+
+authenticatedRoutes.route( '/createRoom', {
+	name: 'createRoom',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'createRoom' } );
+	}
+});
+
+authenticatedRoutes.route( '/roomList', {
+	name: 'roomList',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'roomList' } );
+	}
+});
+
+authenticatedRoutes.route( '/characterCard', {
+	name: 'characterCard',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'characterCard' } );
+	}
+});
+
+
+authenticatedRoutes.route( '/cardCollection', {
+	name: 'cardCollection',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'cardCollection' } );
+	}
+});
+
+
+authenticatedRoutes.route( '/view', {
+	name: 'view',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'view' } );
+	}
+});
+
+
+authenticatedRoutes.route( '/roompage', {
+	name: 'roompage',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'roompage' } );
+	}
 });
