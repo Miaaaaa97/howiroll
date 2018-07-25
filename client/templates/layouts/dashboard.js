@@ -11,17 +11,17 @@ Template.dashboard.onCreated( () => {
 
 
 Template.dashboard.events({
-	'click .rooms': function() {
+	'click #rooms': function() {
 		var roomId = this._id;
 		var roomname = this.name;
 		Session.set('dashboardSelect', roomId);
 		Session.set('dashboardSelectName', roomname);
 	},
-	'click .enter': function() {
+	'click #enter': function() {
 		var current = Session.get('dashboardSelect');
 		FlowRouter.go('/messages/general/' + current);
 	},
-	'click .endgame': function() {
+	'click #endgame': function() {
 		var roomId = Session.get('dashboardSelect');
 		var currentUserId = Meteor.userId();
 		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
