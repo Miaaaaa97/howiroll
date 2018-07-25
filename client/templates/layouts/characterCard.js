@@ -8,7 +8,7 @@ Template.characterCard.events({
 			} else {
 				alert("You have successfully create a card!");
 				$('#characterCard').trigger('reset');
-				FlowRouter.go('/dashboard');
+				FlowRouter.go('/cardCollection');
 			}
 		});
 	},

@@ -1,6 +1,6 @@
 Template.cardCollection.helpers({
 	cards() {
-		let c = CharacterCards.find({owner: Meteor.user()._id});
+		let c = CharacterCards.find({owner: { $in: ["public", Meteor.userId()]}}, { sort: { createAt: 1 } });
 		return c;
 	},
 
