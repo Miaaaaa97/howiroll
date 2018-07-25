@@ -43,6 +43,14 @@ Template.view.events({
 });
 
 Template.view.helpers({
+	isPublic() {
+		var owner = Session.get("owner");
+		if (owner == "public") {
+			return true;
+		}
+		return false;
+	},
+
 	getName() {
 		var id = FlowRouter.getQueryParam("id");  
 		var data = CharacterCards.findOne({_id: id});
