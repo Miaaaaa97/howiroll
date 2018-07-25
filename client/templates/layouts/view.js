@@ -22,6 +22,11 @@ Template.view.events({
 		var id = Session.get("ID");
 		var owner = Session.get("owner");
 		if (owner == "public") {
+			if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
+				Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
+				FlowRouter.go("/cardCollection");
+				return;
+			}
 			Meteor.call('insertCharacterCards',formData, (error) => {
 				if(error) {
 					alert("error");
