@@ -37,6 +37,12 @@ Template.default.helpers({
 			'dashboard',
 			'cardCollection',
 			'characterCard',
+			'createRoom',
+			'roomList',
+			'characterCard',
+			'cardCollection',
+			'view',
+			'roompage',
 			], '/login' );
 	},
 });
