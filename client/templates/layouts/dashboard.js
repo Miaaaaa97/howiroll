@@ -35,6 +35,15 @@ Template.dashboard.events({
 		} else {
 			Bert.alert('Unknown error, exit unsuccessful', 'danger');
 		}
+	},
+	'click #createChar': function() {
+		if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
+			Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
+			FlowRouter.go("/cardCollection");
+			return;
+ 		} else {
+ 			FlowRouter.go("/characterCard");
+ 		}
 	}
 });
 

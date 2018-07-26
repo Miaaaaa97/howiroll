@@ -27,7 +27,7 @@ Template.roomList.events({
         }
     },
 
-	'click .room': function() {
+	'click #rooms': function() {
 		var roomId = this._id;
 		var roomname = this.name;
 		var public = this.public;
@@ -37,7 +37,7 @@ Template.roomList.events({
 		Session.set('selectedpublic', public);
 		Session.set('selectedpw', password);
 	},
-	'click .join': function() {
+	'click #join': function() {
 		var roomId = Session.get('selectedRoom');
 		var roomname = Session.get('selectedRoomName');
 		var public = Session.get('selectedpublic');
@@ -49,7 +49,7 @@ Template.roomList.events({
 			Bert.alert('You are already the GameMaster!', 'warning');
 		} else if (joined != undefined) {
 			Bert.alert('You already joined this game!', 'warning');
-		} else if (public == true) {
+		} else if (public != false) {
 		    Meteor.call('joinRoom', roomId, roomname);
 		    Bert.alert('Joined game successfully!', 'success');
 		} else {

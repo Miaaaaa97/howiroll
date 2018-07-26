@@ -1,3 +1,11 @@
+input {
+	background-color: #e8e8e1;
+}
+
+textarea {
+	background-color: #e8e8e1;
+}
+
 table {
 	font-family:Arial, Tahoma, Verdana, Sans-Serif; 
 	border:2px solid black; 
