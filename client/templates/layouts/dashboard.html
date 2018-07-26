@@ -1,8 +1,42 @@
 <template name="dashboard">
+	<div class="dndimage">
+		<img src="/dnd.bmp"  />
+	</div>
+	<center style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"><br><br>{{currentUser.username}}</center>
+	<center style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 18px;">Welcome to HowiRoll! Start a game now!<br></center>
+	<div class="btn-group btn-group-justified" role="group" aria-label="Perpetua">
+		<div class="btn-group" role="group">
+			<a><button type="button" class="btn btn-default" id="createRoom">Create a Room</button></a>
+		</div>
+		<div class="btn-group" role="group">
+			<a href = "/roomList"><button type="button" class="btn btn-default">Join a Room</button></a>
+		</div>
+		<div class="btn-group" role="group">
+			<a><button type="button" class="btn btn-default" id="createChar">Create a Character</button></a>
+		</div>
+		<div class="btn-group" role="group">
+			<a href = "/cardCollection"><button type="button" class="btn btn-default">View Characters</button></a>
+		</div>
+	</div>
 	<div>
-		<div style="padding:0;margin:0;float:left">
-			<h1> Welcome To How I Roll</h1> 
-		</div>    
+		<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 30px;"> Joined Games </p>
+
+		{{#each rooms}}
+		<div class="list-group">
+			<a href="#" class="list-group-item" id="rooms">
+				<h4 class="list-group-item-heading">{{name}}</h4>
+				<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 14px;">{{intro}}<br> created by: {{createdByname}} , created at: {{createdAt}}</p>
+			</a>
+		</div>
+		{{/each}}
+
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-success" id="enter">Enter Game</button>
+		<button type="button" class="btn btn-warning" id="endgame">End Game</button>
+	</div>
+
+<!-- 	<div> 
 		<div style="padding:500;margin:100;position:absolute; left:700px; top:85px">
 			<a href = "/createRoom">
 				<button class = "button Create">
@@ -33,5 +67,5 @@
         </ul>
         <button class="enter"> Enter game </button>
         <button class="endgame"> End game </button>
-	</div>
+    </div> -->
 </template>

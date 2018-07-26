@@ -1,7 +1,27 @@
 <template name="cardCollection">
 	<div class="cardCollection">
-		<h2> cardCollection </h2>
-		<ul>
+		<div>
+		
+			<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"> Card Collection </p> 
+		
+		</div>
+		
+		<div class="row">
+			{{#each cards}}
+  			<div class="col-sm-6 col-md-4">
+    			<div class="thumbnail">
+      				<img src='defaulticon.jpg'>
+      				<div class="caption">
+        				<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 30px;">{{getName card}}</p>
+        				 <p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;"> Class & level: {{getClass card}}   XP: {{getXp card}}<br> {{getBg card}} <br></p>
+        				<p> <br><a id = "view" href= {{findId _id}} class="btn btn-default" role="button">View</a></p>
+      				</div>
+    			</div>
+  			</div>
+  			{{/each}}
+		</div>
+		
+		<!-- <ul>
 			{{#each cards}}		
 			<a id = "view" href = {{findId _id}}>
 				<li class="cardName">
@@ -10,6 +30,6 @@
 			</a>
 			
 			{{/each}}
-		</ul>	
+		</ul> -->	
 	</div>
 </template>

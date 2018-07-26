@@ -24,30 +24,34 @@ Template.cardDecision.events({
 		var id = Session.get("ID");
 		var roomid = FlowRouter.getParam('roomid');
 		var owner = Session.get("owner");
-		if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
-			Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
-			FlowRouter.go("/cardCollection");
-		} else {	
-			if (owner == "public") { 
-				Meteor.call('insertCharacterCards',formData, (error) => {
-					if(error) {
-						alert("error");
-					} else {
-						$('#characterCard').trigger('reset');
-					}
-				});
+
+		if (owner == "public") { 
+			if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
+				Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
+				FlowRouter.go("/cardCollection");
+				return;
 			} else {
-				Meteor.call('updateCharacterCards',id, formData, (error) => {
+				Meteor.call('insertCharacterCards',formData, (error, result) => {
 					if(error) {
 						alert(error.reason);
-					} else {	
+					} else {
 						$('#characterCard').trigger('reset');
+						id = result;
+						Meteor.call('selectCard', roomid, id);
 					}
 				});
-			}
-			Meteor.call('selectCard', roomid, id);
-			FlowRouter.go("/messages/general/" + roomid);
+			} 
+		}else {
+			Meteor.call('updateCharacterCards',id, formData, (error) => {
+				if(error) {
+					alert(error.reason);
+				} else {	
+					$('#characterCard').trigger('reset');
+					Meteor.call('selectCard', roomid, id);
+				}
+			});
 		}
+		FlowRouter.go("/messages/general/" + roomid);
 	},
 });
 

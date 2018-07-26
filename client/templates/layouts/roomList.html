@@ -1,7 +1,7 @@
 <template name="roomList">
 	<div>
 		
-		<h1> Welcome To RoomList </h1> 
+		<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"> Welcome To RoomList </p> 
 		
 	</div>
 
@@ -25,15 +25,19 @@
 		    {{>loading}}
 		{{else}}
             {{#each rooms}}
-                <li class="room {{selectrm}}">{{name}}: {{intro}}<br>
-                    created by: {{createdByname}} , created at: {{createdAt}} </li>
+            <div class="list-group">
+                <a href="#" class="list-group-item" id="rooms">
+                <h4 class="list-group-item-heading">{{name}}</h4>
+                <p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;">{{intro}}<br> created by: {{createdByname}} , created at: {{createdAt}}</p>
+                </a>
+            </div>
             {{else}}
                 <p class="alert alert-warning">Nothing found for {{query}}. </p>
             {{/each}}
         {{/if}}
     </ul>
     <div>
-    	<button class="join"> Join </button>
+    	<button type="button" class="btn btn-success" id="join"> Join </button>
     </div>
 
 </template>	

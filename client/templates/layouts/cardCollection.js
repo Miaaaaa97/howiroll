@@ -8,6 +8,18 @@ Template.cardCollection.helpers({
 		return card[0].value;
 	},
 
+	getClass(card) {
+		return card[1].value;
+	},
+
+	getXp(card) {
+		return card[6].value;
+	},
+
+	getBg(card) {
+		return card[2].value;
+	},
+
 	findId(id) {
 		return "/view?id="+id;
 	},
