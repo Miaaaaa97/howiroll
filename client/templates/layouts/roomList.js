@@ -18,7 +18,7 @@ Template.roomList.onCreated( () => {
 Template.roomList.events({
 	'keyup [name="search"]' ( event, template ) {
         let value = event.target.value.trim();
-        if ( value !== '' ) { // && event.keyCode === 13 
+        if ( value !== '' && event.keyCode === 13 ) { //  
             template.searchQuery.set( value );
             template.searching.set( true );
         }
@@ -43,6 +43,7 @@ Template.roomList.events({
 		var public = Session.get('selectedpublic');
 		var pw = Session.get('selectedpw');
 		var currentUserId = Meteor.userId();
+		if(roomId != undefined) {
 		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
 		var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
 		if (created) {
@@ -60,6 +61,7 @@ Template.roomList.events({
 			} else {
 				Bert.alert('Wrong password!', 'warning');
 			}
+		}
 		}
 	}
 });
