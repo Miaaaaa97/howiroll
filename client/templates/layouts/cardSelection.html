@@ -1,13 +1,18 @@
 <template name="cardSelection">
 	<div class="cardCollection">
-		<h2> Pls Select The Card You Wish To Use </h2>
+		<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"> Pls select the card you wish to use in this room </p> 
 		<ul>
-			{{#each cards}}		
-			<a id = "view" href = {{findId _id}}>
-				<li class="cardName">
-					{{getName card}}		
-				</li>
-			</a>
+			{{#each cards}}
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src='defaulticon.jpg'>
+					<div class="caption">
+						<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 30px;">{{getName card}}</p>
+						<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;"> Class & level: {{getClass card}}   XP: {{getXp card}}<br> {{getBg card}} <br></p>
+						<p> <br><a id = "view" href= {{findId _id}} class="btn btn-default" role="button">View</a></p>
+					</div>
+				</div>
+			</div>
 			{{/each}}
 		</ul>	
 	</div>

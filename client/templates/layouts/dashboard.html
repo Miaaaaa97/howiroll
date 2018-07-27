@@ -5,29 +5,32 @@
 	<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 18px;">Welcome to HowiRoll! Start a game now!<br></p>
 	</center>
 	<div class="btn-group btn-group-justified" role="group" aria-label="Perpetua">
-  		<div class="btn-group" role="group">
-   			<a href = "/createRoom"><button type="button" class="btn btn-default">Create a Room</button></a>
-  		</div>
-  		<div class="btn-group" role="group">
-    		<a href = "/roomList"><button type="button" class="btn btn-default">Join a Room</button></a>
-  		</div>
-  		<div class="btn-group" role="group">
-    		<a><button type="button" class="btn btn-default" id="createChar">Create a Character</button></a>
-  		</div>
-  		<div class="btn-group" role="group">
-    		<a href = "/cardCollection"><button type="button" class="btn btn-default">View Characters</button></a>
-  		</div>
+		<div class="btn-group" role="group">
+			<a><button type="button" class="btn btn-default" id="createRoom">Create a Room</button></a>
+		</div>
+		<div class="btn-group" role="group">
+			<a href = "/roomList"><button type="button" class="btn btn-default">Join a Room</button></a>
+		</div>
+		<div class="btn-group" role="group">
+			<a><button type="button" class="btn btn-default" id="createChar">Create a Character</button></a>
+		</div>
+		<div class="btn-group" role="group">
+			<a href = "/cardCollection"><button type="button" class="btn btn-default">View Characters</button></a>
+		</div>
 	</div>
 	<div>
 		<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 30px;"> Joined Games </p>
+
 		{{#each rooms}}
 		<div class="list-group">
-  			<a href="#" class="list-group-item" id="rooms">
-    		<h4 class="list-group-item-heading">{{name}}</h4>
-    		<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;">{{intro}}</p>
-  			</a>
+			<a href="" class="list-group-item" id="rooms">
+				<h4 class="list-group-item-heading">{{name}}</h4>
+				<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 14px;">{{intro}}<br> created by: {{createdByname}} , created at: {{createdAt}}</p>
+			</a>
 		</div>
 		{{/each}}
+
+
 	</div>
 	<div class="btn-group">
 		<button type="button" class="btn btn-success" id="enter">Enter Game</button>
@@ -66,4 +69,6 @@
         <button class="enter"> Enter game </button>
         <button class="endgame"> End game </button>
 	</div> -->
+
+
 </template>

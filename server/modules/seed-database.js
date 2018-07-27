@@ -8,7 +8,7 @@ let _seedUsers = () => {
 			email: 'admin@admin.com',
 			password: 'password',
 			profile: {
-				name: { first: 'Carl', last: 'Winslow' }
+				name: { first: 'Carl', last: 'Winslow' },
 			},
 			roles: [ 'admin' ]
 		},{
@@ -16,7 +16,7 @@ let _seedUsers = () => {
 			email: 'dice@admin.com',
 			password: 'password',
 			profile: {
-				name: { first: 'Official', last: 'Dicebot' }
+				name: { first: 'Official', last: 'Dicebot' },
 			},
 			roles: [ 'admin' ]
 		}]

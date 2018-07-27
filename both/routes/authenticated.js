@@ -65,10 +65,3 @@ authenticatedRoutes.route( '/view', {
 	}
 });
 
-
-authenticatedRoutes.route( '/roompage', {
-	name: 'roompage',
-	action() {
-		BlazeLayout.render( 'default', { yield: 'roompage' } );
-	}
-});
