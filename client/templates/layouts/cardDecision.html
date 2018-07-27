@@ -337,12 +337,14 @@
 			</table>
 		</div>
 		<div style="text-align: center">
-			<input class = "button" type="submit" value="submit">
+			<input class = "button" type="submit" value="select">
 		</div>
 	</form>
-  {{#unless isPublic}}
+	{{#unless isPublic}}
+	{{#if isOwner}}
 	<div style="text-align: center">
 		<button class = "button" id = "copy">select and make a copy for this room</button>
 	</div>
+	{{/if}}
 	{{/unless}}
 </template>

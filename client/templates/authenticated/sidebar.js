@@ -6,6 +6,13 @@ Template.sidebar.onCreated( () => {
   Session.set("c", null);
 });
 
+Template.sidebar.events({
+  'click .remove': function(event) {
+    var roomid = FlowRouter.getParam('roomid');
+    Meteor.call('removeParticipant', event.currentTarget.id, roomid);
+  },
+})
+
 Template.sidebar.helpers({
   displayCard(participant) {
     var user = Meteor.users.findOne(participant.name);
@@ -44,7 +51,7 @@ Template.sidebar.helpers({
 },
 
 roomid() {
-    return FlowRouter.getParam('roomid');
+  return FlowRouter.getParam('roomid');
 },
 
 characterName() {

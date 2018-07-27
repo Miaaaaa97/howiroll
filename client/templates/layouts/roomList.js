@@ -28,7 +28,6 @@ Template.roomList.events({
     }
 },
 
-
 'click #rooms': function() {
 	var roomId = this._id;
 	var roomname = this.name;

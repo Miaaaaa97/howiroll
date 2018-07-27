@@ -1,5 +1,5 @@
 Template.cardDecision.onCreated(function() {
-	Meteor.subscribe('getCards');
+	Meteor.subscribe('getCardsForGM');
 	Meteor.subscribe('rooms');
 });
 
@@ -7,7 +7,6 @@ Template.cardDecision.events({
 	'click #copy': function() {
 		event.preventDefault();
 		const formData = $("#characterCardV").serializeArray();
-		var id = Session.get("ID");
 		var roomid = FlowRouter.getParam('roomid');
 
 		if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
@@ -21,8 +20,7 @@ Template.cardDecision.events({
 				alert(error.reason);
 			} else {
 				$('#characterCard').trigger('reset');
-				id = result;
-				Meteor.call('selectCard', roomid, id);
+				Meteor.call('selectCard', roomid, result);
 			}
 		});
 
@@ -70,6 +68,14 @@ Template.cardDecision.helpers({
 	isPublic() {
 		var owner = Session.get("owner");
 		if (owner == "public") {
+			return true;
+		}
+		return false;
+	},
+
+	isOwner() {
+		var owner = Session.get("owner");
+		if (owner == Meteor.userId()) {
 			return true;
 		}
 		return false;
