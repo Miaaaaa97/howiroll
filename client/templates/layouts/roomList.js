@@ -10,7 +10,21 @@ Template.roomList.onCreated( () => {
 			}, 300 );
 		});
 	});
+	var page = new Pagination("roomlist", {perPage:3});
+
+	Template.roomList.roomspage = function() {
+		return Rooms.find({},page.skip());
+	}
+
+	Template.roomList.pager = function() {
+		return page.create(Rooms.find().count());
+	}
 });
+
+// Template.roomList.destroyed = function() {
+// 	page.destroy();
+// }
+
 
 Template.roomList.events({
 	'keyup [name="search"]' ( event, template ) {
@@ -23,7 +37,6 @@ Template.roomList.events({
             template.searchQuery.set( value );
         }
     },
-
 
 	'click #rooms': function() {
 		var roomId = this._id;

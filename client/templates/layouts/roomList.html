@@ -24,7 +24,7 @@
 		{{#if searching}}
 		    {{>loading}}
 		{{else}}
-            {{#each rooms}}
+            {{#each roomspage}}
             <div class="list-group">
                 <a href="" class="list-group-item" id="rooms">
                 <h4 class="list-group-item-heading">{{name}}</h4>
@@ -41,8 +41,10 @@
             {{else}}
                 <p class="alert alert-warning">Nothing found for {{query}}. </p>
             {{/each}}
+            {{{pager}}}
         {{/if}}
     </ul>
+        
     <div>
     	<button type="button" class="btn btn-success" id="join"> Join </button>
     </div>
