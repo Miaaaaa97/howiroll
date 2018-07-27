@@ -340,4 +340,9 @@
 			<input class = "button" type="submit" value="submit">
 		</div>
 	</form>
+  {{#unless isPublic}}
+	<div style="text-align: center">
+		<button class = "button" id = "copy">select and make a copy for this room</button>
+	</div>
+	{{/unless}}
 </template>

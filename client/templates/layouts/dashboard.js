@@ -2,11 +2,12 @@
 // Meteor.subscribe('createdrooms');
 
 Template.dashboard.onCreated( () => {
-  let template = Template.instance();
 
-  template.autorun( () => {
-    template.subscribe( 'createdrooms');
-  });
+	let template = Template.instance();
+
+	template.autorun( () => {
+		template.subscribe( 'createdrooms');
+	});
 });
 
 
@@ -36,14 +37,28 @@ Template.dashboard.events({
 			Bert.alert('Unknown error, exit unsuccessful', 'danger');
 		}
 	},
+
+
+	'click #createRoom': function() {
+		var currentUserId = Meteor.userId();
+		var totalRooms = Rooms.find( { 'participants.name': currentUserId  }).count() + Rooms.find( { createdBy: currentUserId }).count();
+		if (totalRooms >= 10) {
+			Bert.alert("You have reached the maximum number of rooms can join, pls quit some first", "warning");
+			return;
+		} else {
+			FlowRouter.go("/createRoom");
+		}
+	},
+
 	'click #createChar': function() {
 		if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
 			Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
 			FlowRouter.go("/cardCollection");
 			return;
- 		} else {
- 			FlowRouter.go("/characterCard");
- 		}
+
+		} else {
+			FlowRouter.go("/characterCard");
+		}
 	}
 });
 

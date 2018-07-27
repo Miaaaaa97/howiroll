@@ -4,18 +4,29 @@ Template.cardDecision.onCreated(function() {
 });
 
 Template.cardDecision.events({
-	'click #removeButton': function() {
-		alert("removeing");
+	'click #copy': function() {
+		event.preventDefault();
+		const formData = $("#characterCardV").serializeArray();
 		var id = Session.get("ID");
-		Meteor.call('removeCharacterCards', id, (error) => {
+		var roomid = FlowRouter.getParam('roomid');
+
+		if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
+			Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
+			FlowRouter.go("/cardCollection");
+			return;
+		}
+
+		Meteor.call('insertCharacterCards',formData, (error, result) => {
 			if(error) {
 				alert(error.reason);
 			} else {
-				alert("You have successfully removed the card!");
 				$('#characterCard').trigger('reset');
+				id = result;
+				Meteor.call('selectCard', roomid, id);
 			}
 		});
-		FlowRouter.go('/cardCollection');
+
+		FlowRouter.go("/messages/general/" + roomid);
 	},
 
 	"submit #characterCardV":function(event,instance) {
@@ -24,34 +35,46 @@ Template.cardDecision.events({
 		var id = Session.get("ID");
 		var roomid = FlowRouter.getParam('roomid');
 		var owner = Session.get("owner");
-		if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
-			Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
-			FlowRouter.go("/cardCollection");
-		} else {	
-			if (owner == "public") { 
-				Meteor.call('insertCharacterCards',formData, (error) => {
-					if(error) {
-						alert("error");
-					} else {
-						$('#characterCard').trigger('reset');
-					}
-				});
+
+		if (owner == "public") { 
+			if (CharacterCards.find({owner: Meteor.userId()}).count() >= 9) {
+				Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
+				FlowRouter.go("/cardCollection");
+				return;
 			} else {
-				Meteor.call('updateCharacterCards',id, formData, (error) => {
+				Meteor.call('insertCharacterCards',formData, (error, result) => {
 					if(error) {
 						alert(error.reason);
-					} else {	
+					} else {
 						$('#characterCard').trigger('reset');
+						id = result;
+						Meteor.call('selectCard', roomid, id);
 					}
 				});
-			}
-			Meteor.call('selectCard', roomid, id);
-			FlowRouter.go("/messages/general/" + roomid);
+			} 
+		}else {
+			Meteor.call('updateCharacterCards',id, formData, (error) => {
+				if(error) {
+					alert(error.reason);
+				} else {	
+					$('#characterCard').trigger('reset');
+					Meteor.call('selectCard', roomid, id);
+				}
+			});
 		}
+		FlowRouter.go("/messages/general/" + roomid);
 	},
 });
 
 Template.cardDecision.helpers({
+	isPublic() {
+		var owner = Session.get("owner");
+		if (owner == "public") {
+			return true;
+		}
+		return false;
+	},
+
 	getName() {
 		var id = FlowRouter.getParam("cardid");  
 		var data = CharacterCards.findOne({_id: id});
