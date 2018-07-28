@@ -1,6 +1,7 @@
 <template name="channel">
   {{> sidebar}}
-
+  {{redirectOut}}
+  
   <div class="conversation">
     <div id="messages">
       <div class="messages-list {{#if isLoading}}loading-list{{/if}}">

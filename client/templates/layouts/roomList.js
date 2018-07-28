@@ -38,27 +38,28 @@ Template.roomList.events({
         }
     },
 
-	'click #rooms': function() {
-		var roomId = this._id;
-		var roomname = this.name;
-		var public = this.public;
-		var password = this.password;
-		Session.set('selectedRoom', roomId);
-		Session.set('selectedRoomName', roomname);
-		Session.set('selectedpublic', public);
-		Session.set('selectedpw', password);
-	},
 
-	'click #join': function() {
-		var roomId = Session.get('selectedRoom');
-		var roomname = Session.get('selectedRoomName');
-		var public = Session.get('selectedpublic');
-		var pw = Session.get('selectedpw');
-		var currentUserId = Meteor.userId();
-		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
-		var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
-		var totalRooms = Rooms.find( { 'participants.name': currentUserId  }).count() + Rooms.find( { createdBy: currentUserId }).count();
-		var room = Rooms.findOne({_id: roomId});
+'click #rooms': function() {
+	var roomId = this._id;
+	var roomname = this.name;
+	var public = this.public;
+	var password = this.password;
+	Session.set('selectedRoom', roomId);
+	Session.set('selectedRoomName', roomname);
+	Session.set('selectedpublic', public);
+	Session.set('selectedpw', password);
+},
+
+'click #join': function() {
+	var roomId = Session.get('selectedRoom');
+	var roomname = Session.get('selectedRoomName');
+	var public = Session.get('selectedpublic');
+	var pw = Session.get('selectedpw');
+	var currentUserId = Meteor.userId();
+	var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
+	var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
+	var totalRooms = Rooms.find( { 'participants.name': currentUserId  }).count() + Rooms.find( { createdBy: currentUserId }).count();
+	var room = Rooms.findOne({_id: roomId});
 
 		if (!roomId) { return; }
 		if (created) {

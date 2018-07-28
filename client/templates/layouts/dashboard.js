@@ -46,7 +46,6 @@ Template.dashboard.events({
 		}
 	},
 
-
 	'click #createRoom': function() {
 		var currentUserId = Meteor.userId();
 		var totalRooms = Rooms.find( { 'participants.name': currentUserId  }).count() + Rooms.find( { createdBy: currentUserId }).count();
@@ -63,7 +62,6 @@ Template.dashboard.events({
 			Bert.alert("You have reached the maximum number of characterCards allowed to hold, pls delete some first", "warning");
 			FlowRouter.go("/cardCollection");
 			return;
-
 		} else {
 			FlowRouter.go("/characterCard");
 		}

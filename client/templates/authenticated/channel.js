@@ -6,10 +6,31 @@ import handleRoll from '../../modules/handle-roll';
 
 Template.channel.onCreated( () => {
 	let template = Template.instance();
+	Meteor.subscribe('rooms');
 	handleChannelSwitch( template );
 });
 
 Template.channel.helpers({
+	redirectOut() {
+		var roomid = FlowRouter.getParam('roomid');
+		var currentUser = Meteor.userId();
+		var currentRoom = Rooms.findOne(roomid);
+		var participants = currentRoom.participants;
+		var creater = currentRoom.createdBy;
+
+		if (currentUser == creater) {
+			return true;
+		}
+		
+		for (var i = 0; i < participants.length; i++) {
+			if (participants[i].name == currentUser) {
+				return true;
+			}
+		}
+		FlowRouter.go("/dashboard");
+		return false;
+	},
+
 	isLoading() {
 		return Template.instance().loading.get();
 	},
