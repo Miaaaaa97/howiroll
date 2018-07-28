@@ -66,6 +66,6 @@ Meteor.methods({
     },
     'submitBug': function(bugmessage) {
         check(bugmessage, String);
-        Bugs.insert({bug: bugmessage});
+        Bugs.insert({bugInfo: bugmessage, reporter: Meteor.userId(), createdAt: new Date()});
     }
 });
