@@ -13,13 +13,6 @@ publicRoutes.route( '/signup', {
 	}
 });
 
-publicRoutes.route( '/mysteriousaddress', {
-	name: 'signup',
-	action() {
-		BlazeLayout.render( 'default', { yield: 'mysteriousaddress' } );
-	}
-});
-
 publicRoutes.route( '/login', {
 	name: 'login',
 	action() {
