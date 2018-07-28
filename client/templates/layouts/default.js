@@ -43,6 +43,11 @@ Template.default.helpers({
 			'cardCollection',
 			'view',
 			'roompage',
+			'bugReport',
+			'cardDecision',
+			'cardSelection',
+			'message',
+			'view'
 			], '/login' );
 	},
 });
