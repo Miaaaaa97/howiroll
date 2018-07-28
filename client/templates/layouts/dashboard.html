@@ -1,9 +1,9 @@
 <template name="dashboard">
-	<div class="dndimage">
-		<img src="/dnd.bmp"  />
-	</div>
-	<center style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"><br><br>{{currentUser.username}}</center>
-	<center style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 18px;">Welcome to HowiRoll! Start a game now!<br></center>
+	<center>
+	<img src="/dnd.bmp"  />
+	<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"> {{currentUser.username}} </p>
+	<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 18px;">Welcome to HowiRoll! Start a game now!<br></p>
+	</center>
 	<div class="btn-group btn-group-justified" role="group" aria-label="Perpetua">
 		<div class="btn-group" role="group">
 			<a><button type="button" class="btn btn-default" id="createRoom">Create a Room</button></a>
@@ -23,7 +23,7 @@
 
 		{{#each rooms}}
 		<div class="list-group">
-			<a href="#" class="list-group-item" id="rooms">
+			<a href="" class="list-group-item" id="rooms">
 				<h4 class="list-group-item-heading">{{name}}</h4>
 				<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 14px;">{{intro}}<br> created by: {{createdByname}} , created at: {{createdAt}}</p>
 			</a>
@@ -67,5 +67,7 @@
         </ul>
         <button class="enter"> Enter game </button>
         <button class="endgame"> End game </button>
+
     </div> -->
+
 </template>

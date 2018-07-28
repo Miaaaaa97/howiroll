@@ -1,5 +1,5 @@
 <template name="cardSelection">
-	<div class="cardCollection">
+	<div class="cardSelect">
 		<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"> Pls select the card you wish to use in this room </p> 
 		<ul>
 			{{#each cards}}
@@ -8,7 +8,7 @@
 					<img src='defaulticon.jpg'>
 					<div class="caption">
 						<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 30px;">{{getName card}}</p>
-						<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;"> Class & level: {{getClass card}}   XP: {{getXp card}}<br> {{getBg card}} <br></p>
+						<p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;"> Class and level: {{getClass card}}   XP: {{getXp card}}<br> {{getBg card}} <br></p>
 						<p> <br><a id = "view" href= {{findId _id}} class="btn btn-default" role="button">View</a></p>
 					</div>
 				</div>

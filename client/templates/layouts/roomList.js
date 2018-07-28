@@ -1,6 +1,5 @@
 Template.roomList.onCreated( () => {
-	let template = Template.instance();
-
+  let template = Template.instance();
 	template.searchQuery = new ReactiveVar();
 	template.searching   = new ReactiveVar( false );
 
@@ -11,22 +10,34 @@ Template.roomList.onCreated( () => {
 			}, 300 );
 		});
 	});
+	var page = new Pagination("roomlist", {perPage:3});
+
+	Template.roomList.roomspage = function() {
+		return Rooms.find({},page.skip());
+	}
+
+	Template.roomList.pager = function() {
+		return page.create(Rooms.find().count());
+	}
 });
+
+// Template.roomList.destroyed = function() {
+// 	page.destroy();
+// }
+
 
 Template.roomList.events({
 	'keyup [name="search"]' ( event, template ) {
-		let value = event.target.value.trim();
-		if (event.keyCode == 13) {
-			return;
-		}
-    if ( value !== '' ) { // && event.keyCode === 13 
-    	template.searchQuery.set( value );
-    	template.searching.set( true );
-    }
-    if ( value === '' ) {
-    	template.searchQuery.set( value );
-    }
-},
+        let value = event.target.value.trim();
+        if ( value !== ''  ) { //  && event.keyCode === 13
+            template.searchQuery.set( value );
+            template.searching.set( true );
+        }
+        if ( value === '' ) {
+            template.searchQuery.set( value );
+        }
+    },
+
 
 'click #rooms': function() {
 	var roomId = this._id;
@@ -50,29 +61,14 @@ Template.roomList.events({
 	var totalRooms = Rooms.find( { 'participants.name': currentUserId  }).count() + Rooms.find( { createdBy: currentUserId }).count();
 	var room = Rooms.findOne({_id: roomId});
 
-	if (!roomId) { return; }
-	if (created) {
-		FlowRouter.go('/messages/general/' + roomId);
-		Bert.alert('You are already the GameMaster!', 'warning');
-	} else if (joined != undefined) {
-		FlowRouter.go('/messages/general/' + roomId);
-		Bert.alert('You already joined this game!', 'warning');
-	} else if (public != false) {
-		if (totalRooms < 10) {
-			if (room.participants.length >= room.numplayers) {
-				Bert.alert("The room is already full, pls select another room to join", "warning");
-				return;
-			}
-			Meteor.call('joinRoom', roomId, roomname);
+		if (!roomId) { return; }
+		if (created) {
 			FlowRouter.go('/messages/general/' + roomId);
-			Bert.alert('Joined game successfully!', 'success');
-		} else {
-			FlowRouter.go("/dashboard");
-			Bert.alert("You have reached the maximum number of rooms can join, pls quit some first", "warning");
-		}
-	} else {
-		var password = prompt("This is a private room. Please enter password: ", "password");
-		if (password == pw) {
+			Bert.alert('You are already the GameMaster!', 'warning');
+		} else if (joined != undefined) {
+			FlowRouter.go('/messages/general/' + roomId);
+			Bert.alert('You already joined this game!', 'warning');
+		} else if (public != false) {
 			if (totalRooms < 10) {
 				if (room.participants.length >= room.numplayers) {
 					Bert.alert("The room is already full, pls select another room to join", "warning");
@@ -86,10 +82,26 @@ Template.roomList.events({
 				Bert.alert("You have reached the maximum number of rooms can join, pls quit some first", "warning");
 			}
 		} else {
-			Bert.alert('Wrong password!', 'warning');
+			var password = prompt("This is a private room. Please enter password: ", "password");
+			if (password == pw) {
+				if (totalRooms < 10) {
+					if (room.participants.length >= room.numplayers) {
+						Bert.alert("The room is already full, pls select another room to join", "warning");
+						return;
+					}
+					Meteor.call('joinRoom', roomId, roomname);
+			        Bert.alert('Joined game successfully!', 'success');
+					FlowRouter.go('/messages/general/' + roomId);
+					Bert.alert('Joined game successfully!', 'success');
+				} else {
+					FlowRouter.go("/dashboard");
+					Bert.alert("You have reached the maximum number of rooms can join, pls quit some first", "warning");
+				}
+			} else {
+				Bert.alert('Wrong password!', 'warning');
+			}
 		}
 	}
-}
 });
 
 Template.roomList.helpers({
@@ -115,4 +127,5 @@ Template.roomList.helpers({
 			return "selected";
 		}
 	}
+
 });

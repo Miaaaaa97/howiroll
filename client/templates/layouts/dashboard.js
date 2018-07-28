@@ -20,21 +20,29 @@ Template.dashboard.events({
 	},
 	'click #enter': function() {
 		var current = Session.get('dashboardSelect');
-		FlowRouter.go('/messages/general/' + current);
+		if (current != undefined) {
+			FlowRouter.go('/messages/general/' + current);
+		} else {
+			Bert.alert("Please select a room first!", "warning")
+		}
 	},
 	'click #endgame': function() {
 		var roomId = Session.get('dashboardSelect');
 		var currentUserId = Meteor.userId();
 		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
 		var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
-		if (joined) {
-			Bert.alert('Exited game successfully!', 'success');
-			Meteor.call('exitgame', roomId);
-		} else if (created) {
-			Bert.alert('Ended game successfully for all players!', 'success');
-			Meteor.call('deletegame', roomId);
+		if (current == undefined) {
+			Bert. alert("Please select a room first!", "warning");
 		} else {
-			Bert.alert('Unknown error, exit unsuccessful', 'danger');
+			if (joined) {
+				Bert.alert('Exited game successfully!', 'success');
+				Meteor.call('exitgame', roomId);
+			} else if (created) {
+				Bert.alert('Ended game successfully for all players!', 'success');
+				Meteor.call('deletegame', roomId);
+			} else {
+				Bert.alert('Unknown error, exit unsuccessful', 'danger');
+			}
 		}
 	},
 

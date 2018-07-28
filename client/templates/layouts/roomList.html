@@ -5,7 +5,7 @@
 		
 	</div>
 
-	<input type="text" name="search" class="form-control" placeholder="Search a room..."><br>
+	<input type="text" name="search" class="form-control" placeholder="Search a Room...."><br>
 
 	<br>
 <!-- 	{{#if searching}}
@@ -24,18 +24,27 @@
 		{{#if searching}}
 		    {{>loading}}
 		{{else}}
-            {{#each rooms}}
+            {{#each roomspage}}
             <div class="list-group">
-                <a href="#" class="list-group-item" id="rooms">
+                <a href="" class="list-group-item" id="rooms">
                 <h4 class="list-group-item-heading">{{name}}</h4>
-                <p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;">{{intro}}<br> created by: {{createdByname}} , created at: {{createdAt}}</p>
+                <p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;">{{intro}}<br> </p>
+                {{#if public}} 
+                    <p class="list-group-item-text" style="color: green; font-family: Perpetua, fantasy; font-size: 15px;"> public </p>
+                {{else}}
+                    <p class="list-group-item-text" style="color: red; font-family: Perpetua, fantasy; font-size: 15px;"> private </p>
+                {{/if}}
+                <p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;">created by: {{createdByname}} , created at: {{createdAt}}  
+                </p>
                 </a>
             </div>
             {{else}}
                 <p class="alert alert-warning">Nothing found for {{query}}. </p>
             {{/each}}
+            {{{pager}}}
         {{/if}}
     </ul>
+        
     <div>
     	<button type="button" class="btn btn-success" id="join"> Join </button>
     </div>

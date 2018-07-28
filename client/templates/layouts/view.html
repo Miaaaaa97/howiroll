@@ -337,12 +337,8 @@
 			</table>
 		</div>
 		<div style="text-align: center">
-			<input class = "button" type="submit" value="edit">
+			<input class = "button" type="submit" value="edit"> {{#unless isPublic}} <button class = "button" id = "removeButton">remove</button> {{/unless}}
 		</div>
 	</form>
-	{{#unless isPublic}}
-	<div style="text-align: center">
-		<button class = "button" id = "removeButton">remove</button>
-	</div>
-	{{/unless}}
+	
 </template>

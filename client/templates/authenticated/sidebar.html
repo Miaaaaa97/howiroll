@@ -13,7 +13,7 @@
 		</ul>
 		{{#if isGM}}
 		<div>
-			<h3>click to view each PC</h3>
+			<p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 18px;">Click to view/change PC stats:</p>
 			<ul>
 				{{#each participant in participants}}
 				<li>
@@ -28,14 +28,14 @@
 		{{else}}
 		<div>
 			{{#if hasCard}}
-			<h1>{{characterName}}</h1>
+			<p style="color: #105c8c; font-family: Perpetua, fantasy; font-size: 25px;">{{characterName}}</p>
 			<ul>
-				<li>strength {{getStr}}</li>
-				<li>dexterity {{getDex}}</li>
-				<li>constitution {{getCons}}</li>
-				<li>intelligence {{getInt}}</li>
-				<li>wisdom {{getWis}}</li>
-				<li>charisma {{getCha}}</li>
+				<li><a>Strength: {{getStr}}</a></li>
+				<li><a>Dexterity: {{getDex}}</a></li>
+				<li><a>Constitution: {{getCons}}</a></li>
+				<li><a>Intelligence: {{getInt}}</a></li>
+				<li><a>Wisdom: {{getWis}}</a></li>
+				<li><a>Charisma: {{getCha}}</a></li>
 			</ul>
 			{{/if}}
 		</div>
