@@ -1,7 +1,8 @@
 <template name="sidebar">
 
 	<aside class="sidebar">
-		<h5>Channels</h5>
+		<h5>Room ID: {{roomid}} <br></h5>
+		<h5><br>Channels:</h5>
 		<ul>
 			{{#each channel in channels}}
 			<li class="{{currentChannel channel.name}}">
