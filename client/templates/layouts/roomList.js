@@ -10,7 +10,7 @@ Template.roomList.onCreated( () => {
 			}, 300 );
 		});
 	});
-	var page = new Pagination("roomlist", {perPage:3});
+	var page = new Pagination("roomlist", {perPage:6});
 
 	Template.roomList.roomspage = function() {
 		return Rooms.find({},page.skip());
