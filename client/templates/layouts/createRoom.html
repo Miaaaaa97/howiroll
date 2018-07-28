@@ -5,12 +5,14 @@
 		<input type="text" name = "roomname" required="required"><br>
 		Game Introduction: <br>
 		<input type="text" name = "intro"><br>
-		Password: <br>
-		<input type="text" name = "password"><br>
 		Number of Players: <br>
 		<input type="number" name = "numplayers" min="3" max="10" required="required"><br>
 		Open to public:<br>
-		Yes <input type="radio" name="choice" value="yes">   No <input type="radio" name="choice" value="no"><br>
+		Yes <input type="radio" name="choice" id="yes" value="yes">   No <input type="radio" name="choice" id="no" value="no"><br>
+		{{#if private}}
+		Password: <br>
+		<input type="text" name = "password"><br>
+		{{/if}}
 		<input type="submit" value = "submit">
 	</form>
     </center>

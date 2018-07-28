@@ -63,5 +63,9 @@ Meteor.methods({
     'deletegame': function(roomId) {
         check(roomId, String);
         Rooms.remove({_id: roomId});
+    },
+    'submitBug': function(bugmessage) {
+        check(bugmessage, String);
+        Bugs.insert({bug: bugmessage});
     }
 });

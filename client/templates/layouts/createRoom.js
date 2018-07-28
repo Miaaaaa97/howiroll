@@ -4,9 +4,16 @@ Template.dashboard.onCreated( () => {
     template.autorun( () => {
         template.subscribe( 'createdrooms');
     });
+    Session.set('private', false);
 });
 
 Template.createRoom.events({
+    'click #yes': function(event, template) {
+        Session.set('private', false);
+    },
+    'click #no': function(event, template) {
+        Session.set('private', true);
+    },
     'submit form': function(event){
         event.preventDefault();
         var currentUserId = Meteor.userId();
@@ -17,7 +24,11 @@ Template.createRoom.events({
         }
         var roomname = event.target.roomname.value;
         var intro = event.target.intro.value;
-        var password = event.target.password.value;
+        if (Session.get('private')) {
+            var password = event.target.password.value;
+        } else {
+            var password = "1";
+        }
         var numplayers = event.target.numplayers.value;
         var public = false;
         
@@ -31,3 +42,9 @@ Template.createRoom.events({
         FlowRouter.go('/dashboard');
     }
 });
+
+Template.createRoom.helpers({
+    'private': function() {
+        return Session.get('private');
+    }
+})

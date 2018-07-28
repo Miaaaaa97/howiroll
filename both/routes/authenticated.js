@@ -65,4 +65,11 @@ authenticatedRoutes.route( '/view', {
 	}
 });
 
+authenticatedRoutes.route( '/bugReport', {
+	name: 'bugReport',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'bugReport' } );
+	}
+});
+
 

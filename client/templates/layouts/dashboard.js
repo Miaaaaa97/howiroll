@@ -31,7 +31,7 @@ Template.dashboard.events({
 		var currentUserId = Meteor.userId();
 		var joined = Rooms.findOne( {$and: [{_id: roomId}, { 'participants.name': currentUserId  }]});
 		var created = Rooms.findOne({_id: roomId, createdBy: currentUserId});
-		if (current == undefined) {
+		if (roomId == undefined) {
 			Bert. alert("Please select a room first!", "warning");
 		} else {
 			if (joined) {
