@@ -72,4 +72,12 @@ authenticatedRoutes.route( '/bugReport', {
 	}
 });
 
+authenticatedRoutes.route( '/bugDisplay', {
+	name: 'bugDisplay',
+	action() {
+		BlazeLayout.render( 'default', { yield: 'bugDisplay' } );
+	}
+});
+
+
 

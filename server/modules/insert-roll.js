@@ -1,5 +1,5 @@
 let _insertMessage = ( message ) => {
-  return Messages.insert( message );
+	return Messages.insert( message );
 };
 
 let _escapeUnwantedMarkdown = ( message ) => {
@@ -10,51 +10,51 @@ let _escapeUnwantedMarkdown = ( message ) => {
 };
 
 let _cleanUpMessageBeforeInsert = ( message ) => {
-  delete message.destination;
-  delete message.isDirect;
-  message.message = _escapeUnwantedMarkdown( message.message );
+	delete message.destination;
+	delete message.isDirect;
+	message.message = _escapeUnwantedMarkdown( message.message );
 };
 
 let _getChannelId = ( channelName ) => {
-  let channel = Channels.findOne( { name: channelName } );
-  if ( channel ) {
-    return channel._id;
-  }
+	let channel = Channels.findOne( { name: channelName } );
+	if ( channel ) {
+		return channel._id;
+	}
 };
 
 let _getUserId = ( username ) => {
-  let user = Meteor.users.findOne( { username: username } );
-  if ( user ) {
-    return user._id;
-  }
+	let user = Meteor.users.findOne( { username: username } );
+	if ( user ) {
+		return user._id;
+	}
 };
 
 let _assignDestination = ( message ) => {
-  if ( message.isDirect ) {
-    message.to = _getUserId( message.destination );
-  } else {
-    let channelId = _getChannelId( message.destination );
-    message.channel = channelId;
-  }
+	if ( message.isDirect ) {
+		message.to = _getUserId( message.destination );
+	} else {
+		let channelId = _getChannelId( message.destination );
+		message.channel = channelId;
+	}
 };
 
 let _checkIfSelf = ( { destination, owner } ) => {
-  return destination === owner;
+	return destination === owner;
 };
 
 let _assignOwnerAndTimestamp = ( message ) => {
-  message.owner     = "aKcQYNwCJQbAJEzgh";
-  message.timestamp = new Date();
+	message.owner     = "0000";
+	message.timestamp = new Date();
 };
 
 export default function( message ) {
-  _assignOwnerAndTimestamp( message );
+	_assignOwnerAndTimestamp( message );
 
-  if ( !_checkIfSelf( message ) ) {
-    _assignDestination( message );
-    _cleanUpMessageBeforeInsert( message );
-    _insertMessage( message );
-  } else {
-    throw new Meteor.Error( '500', 'Can\'t send messages to yourself.' );
-  }
+	if ( !_checkIfSelf( message ) ) {
+		_assignDestination( message );
+		_cleanUpMessageBeforeInsert( message );
+		_insertMessage( message );
+	} else {
+		throw new Meteor.Error( '500', 'Can\'t send messages to yourself.' );
+	}
 }
