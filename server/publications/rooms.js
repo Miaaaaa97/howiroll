@@ -15,7 +15,8 @@ Meteor.publish( 'searchrooms', function( search ) {
       $or: [
         { name: regex },
         { intro: regex },
-        { createdByname: regex }
+        { createdByname: regex },
+        { _id: regex}
       ]
     };
 
