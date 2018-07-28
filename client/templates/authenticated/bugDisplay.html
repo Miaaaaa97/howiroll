@@ -1,0 +1,29 @@
+<template name="bugDisplay">
+    {{redirectOut}}
+    
+    <div>
+
+      <p style="color: #4e5446; font-family: Perpetua, fantasy; font-size: 45px;"> Welcome To bugDisplay </p> 
+
+  </div>
+  <br>
+  <ul class="list-group">
+
+    {{#each bugs}}
+    <div class="list-group">
+        <a href="" class="list-group-item" id="bugs" style="display:block; word-wrap:break-word;">
+            <p>{{bugInfo}}</p>
+            <p class="list-group-item-text" style="color: #abb1a3; font-family: Perpetua, fantasy; font-size: 15px;">{{reporter}}<br> </p>
+        </a>
+    </div>
+
+    {{/each}}
+
+
+</ul>
+
+<div>
+   <button type="button" class="btn btn-success" id="remove"> remove </button>
+</div>
+
+</template>	

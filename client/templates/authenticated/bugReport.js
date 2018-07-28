@@ -1,7 +1,16 @@
 Template.bugReport.events({
-	'click #submitbug': function() {
-		// Meteor.call('submitBug', report);
-		Bert.alert('Successfully reported bug! Thank you:)', 'success');
+	"submit #bug": function(event,instance) {
+		event.preventDefault();
+		var bug = event.target.report.value;
+
+		Meteor.call('submitBug',bug, (error, result) => {
+			if(error) {
+				alert(error.reason);
+			} else {
+				Bert.alert('Bug report successful! Thank you:)', 'success');
+			}
+		});
+		
 		FlowRouter.go("/dashboard");
 	}
 });
